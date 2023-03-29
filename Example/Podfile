@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'SiaraShield-iOS_Example' do
+  pod 'SiaraShield-iOS', :path => '../'
+
+  target 'SiaraShield-iOS_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
