@@ -28,11 +28,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/Shital05Jadav/SiaraShield-iOS.git', :tag => s.version.to_s }
  
   s.ios.deployment_target = '10.0'
-  s.source_files = 'SiaraShield-iOS/**/*.{h,m,swift,xib}'
+  s.source_files = 'SiaraShield-iOS/**/*.{h,m,swift,xib,xcassets}'
   
-  # s.resource_bundles = {
-  #   'SiaraShield-iOS' => ['SiaraShield-iOS/Assets/*.png']
-  # }
 
  s.resource_bundles = {
     'SiaraShield-iOS' => ['SiaraShield-iOS/**/*']

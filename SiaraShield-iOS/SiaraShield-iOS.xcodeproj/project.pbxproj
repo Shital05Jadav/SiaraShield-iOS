@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		588EC0A529CC3F60003AA3B5 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EC0A429CC3F60003AA3B5 /* ProgressHUD.swift */; };
+		588EC12D29CDE107003AA3B5 /* McPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EC12929CDE106003AA3B5 /* McPickerPopoverViewController.swift */; };
+		588EC12E29CDE107003AA3B5 /* McPickerBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EC12A29CDE106003AA3B5 /* McPickerBarButtonItem.swift */; };
+		588EC12F29CDE107003AA3B5 /* McTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EC12B29CDE106003AA3B5 /* McTextField.swift */; };
+		588EC13029CDE107003AA3B5 /* McPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EC12C29CDE106003AA3B5 /* McPicker.swift */; };
+		58D60BCD29C85DB7003A1D65 /* SiaraShield_iOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = 58D60BCC29C85DB7003A1D65 /* SiaraShield_iOS.docc */; };
+		58D60BD329C85DB8003A1D65 /* SiaraShield_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D60BC829C85DB7003A1D65 /* SiaraShield_iOS.framework */; };
+		58D60BD929C85DB8003A1D65 /* SiaraShield_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 58D60BCB29C85DB7003A1D65 /* SiaraShield_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58D60BE529C86152003A1D65 /* verificationPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60BE329C86152003A1D65 /* verificationPopUpView.swift */; };
+		58D60BE629C86152003A1D65 /* verificationPopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D60BE429C86152003A1D65 /* verificationPopUpView.xib */; };
+		58D60BEB29C863FB003A1D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D60BEA29C863FB003A1D65 /* Assets.xcassets */; };
+		58D60BF129C876C3003A1D65 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60BF029C876C3003A1D65 /* extensions.swift */; };
+		58D60BF329C8771B003A1D65 /* verifiedGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 58D60BF229C8771B003A1D65 /* verifiedGif.gif */; };
+		58D60C2529C97040003A1D65 /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60C2429C97040003A1D65 /* iOSDropDown.swift */; };
+		58D60C2729C9726F003A1D65 /* SlidingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D60C2629C9726F003A1D65 /* SlidingView.xib */; };
+		58D60C2929C972D1003A1D65 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60C2829C972D1003A1D65 /* SlidingView.swift */; };
+		58D60C2C29C98506003A1D65 /* SiaraShieldModelClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60C2B29C98506003A1D65 /* SiaraShieldModelClass.swift */; };
+		58D60C2F29C99F38003A1D65 /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60C2E29C99F38003A1D65 /* FirstViewModel.swift */; };
+		58D60C3229C9A1B3003A1D65 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60C3129C9A1B3003A1D65 /* EndPoint.swift */; };
+		58D60C3429C9B146003A1D65 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60C3329C9B146003A1D65 /* Constant.swift */; };
+		58D60C8029CAB944003A1D65 /* submitCaptchaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60C7D29CAB944003A1D65 /* submitCaptchaViewModel.swift */; };
+		58D60C8129CAB944003A1D65 /* CaptchaVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60C7E29CAB944003A1D65 /* CaptchaVerifyViewModel.swift */; };
+		58D60C8229CAB944003A1D65 /* GenerateCaptchaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D60C7F29CAB944003A1D65 /* GenerateCaptchaViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		58D60BD429C85DB8003A1D65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58D60BBF29C85DB7003A1D65 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58D60BC729C85DB7003A1D65;
+			remoteInfo = "SiaraShield-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		588EC0A429CC3F60003AA3B5 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		588EC12929CDE106003AA3B5 /* McPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McPickerPopoverViewController.swift; sourceTree = "<group>"; };
+		588EC12A29CDE106003AA3B5 /* McPickerBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McPickerBarButtonItem.swift; sourceTree = "<group>"; };
+		588EC12B29CDE106003AA3B5 /* McTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McTextField.swift; sourceTree = "<group>"; };
+		588EC12C29CDE106003AA3B5 /* McPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McPicker.swift; sourceTree = "<group>"; };
+		58D60BC829C85DB7003A1D65 /* SiaraShield_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SiaraShield_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58D60BCB29C85DB7003A1D65 /* SiaraShield_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SiaraShield_iOS.h; sourceTree = "<group>"; };
+		58D60BCC29C85DB7003A1D65 /* SiaraShield_iOS.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SiaraShield_iOS.docc; sourceTree = "<group>"; };
+		58D60BD229C85DB8003A1D65 /* SiaraShield-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SiaraShield-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		58D60BE329C86152003A1D65 /* verificationPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verificationPopUpView.swift; sourceTree = "<group>"; };
+		58D60BE429C86152003A1D65 /* verificationPopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = verificationPopUpView.xib; sourceTree = "<group>"; };
+		58D60BEA29C863FB003A1D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		58D60BF029C876C3003A1D65 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		58D60BF229C8771B003A1D65 /* verifiedGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = verifiedGif.gif; sourceTree = "<group>"; };
+		58D60C2429C97040003A1D65 /* iOSDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
+		58D60C2629C9726F003A1D65 /* SlidingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlidingView.xib; sourceTree = "<group>"; };
+		58D60C2829C972D1003A1D65 /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
+		58D60C2B29C98506003A1D65 /* SiaraShieldModelClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiaraShieldModelClass.swift; sourceTree = "<group>"; };
+		58D60C2E29C99F38003A1D65 /* FirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewModel.swift; sourceTree = "<group>"; };
+		58D60C3129C9A1B3003A1D65 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		58D60C3329C9B146003A1D65 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		58D60C7D29CAB944003A1D65 /* submitCaptchaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = submitCaptchaViewModel.swift; sourceTree = "<group>"; };
+		58D60C7E29CAB944003A1D65 /* CaptchaVerifyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptchaVerifyViewModel.swift; sourceTree = "<group>"; };
+		58D60C7F29CAB944003A1D65 /* GenerateCaptchaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateCaptchaViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58D60BC529C85DB7003A1D65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58D60BCF29C85DB8003A1D65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58D60BD329C85DB8003A1D65 /* SiaraShield_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		58D60BBE29C85DB7003A1D65 = {
+			isa = PBXGroup;
+			children = (
+				58D60BCA29C85DB7003A1D65 /* SiaraShield-iOS */,
+				58D60BC929C85DB7003A1D65 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		58D60BC929C85DB7003A1D65 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58D60BC829C85DB7003A1D65 /* SiaraShield_iOS.framework */,
+				58D60BD229C85DB8003A1D65 /* SiaraShield-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58D60BCA29C85DB7003A1D65 /* SiaraShield-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				58D60C3029C9A16B003A1D65 /* Networking */,
+				58D60C2D29C99EF3003A1D65 /* ViewModel */,
+				58D60C2A29C984B4003A1D65 /* Model */,
+				58D60BF229C8771B003A1D65 /* verifiedGif.gif */,
+				58D60BE729C8617C003A1D65 /* Source */,
+				58D60BE229C860E5003A1D65 /* repo */,
+				58D60BCB29C85DB7003A1D65 /* SiaraShield_iOS.h */,
+				58D60BCC29C85DB7003A1D65 /* SiaraShield_iOS.docc */,
+				58D60BEA29C863FB003A1D65 /* Assets.xcassets */,
+			);
+			path = "SiaraShield-iOS";
+			sourceTree = "<group>";
+		};
+		58D60BE229C860E5003A1D65 /* repo */ = {
+			isa = PBXGroup;
+			children = (
+				58D60BE329C86152003A1D65 /* verificationPopUpView.swift */,
+				58D60BE429C86152003A1D65 /* verificationPopUpView.xib */,
+				58D60C2629C9726F003A1D65 /* SlidingView.xib */,
+				58D60C2829C972D1003A1D65 /* SlidingView.swift */,
+			);
+			path = repo;
+			sourceTree = "<group>";
+		};
+		58D60BE729C8617C003A1D65 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				588EC12C29CDE106003AA3B5 /* McPicker.swift */,
+				588EC12A29CDE106003AA3B5 /* McPickerBarButtonItem.swift */,
+				588EC12929CDE106003AA3B5 /* McPickerPopoverViewController.swift */,
+				588EC12B29CDE106003AA3B5 /* McTextField.swift */,
+				588EC0A429CC3F60003AA3B5 /* ProgressHUD.swift */,
+				58D60C2429C97040003A1D65 /* iOSDropDown.swift */,
+				58D60BF029C876C3003A1D65 /* extensions.swift */,
+				58D60C3329C9B146003A1D65 /* Constant.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		58D60C2A29C984B4003A1D65 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58D60C2B29C98506003A1D65 /* SiaraShieldModelClass.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		58D60C2D29C99EF3003A1D65 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				58D60C7E29CAB944003A1D65 /* CaptchaVerifyViewModel.swift */,
+				58D60C7F29CAB944003A1D65 /* GenerateCaptchaViewModel.swift */,
+				58D60C7D29CAB944003A1D65 /* submitCaptchaViewModel.swift */,
+				58D60C2E29C99F38003A1D65 /* FirstViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		58D60C3029C9A16B003A1D65 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				58D60C3129C9A1B3003A1D65 /* EndPoint.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		58D60BC329C85DB7003A1D65 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58D60BD929C85DB8003A1D65 /* SiaraShield_iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		58D60BC729C85DB7003A1D65 /* SiaraShield-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58D60BDC29C85DB8003A1D65 /* Build configuration list for PBXNativeTarget "SiaraShield-iOS" */;
+			buildPhases = (
+				58D60BC329C85DB7003A1D65 /* Headers */,
+				58D60BC429C85DB7003A1D65 /* Sources */,
+				58D60BC529C85DB7003A1D65 /* Frameworks */,
+				58D60BC629C85DB7003A1D65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SiaraShield-iOS";
+			productName = "SiaraShield-iOS";
+			productReference = 58D60BC829C85DB7003A1D65 /* SiaraShield_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		58D60BD129C85DB8003A1D65 /* SiaraShield-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58D60BDF29C85DB8003A1D65 /* Build configuration list for PBXNativeTarget "SiaraShield-iOSTests" */;
+			buildPhases = (
+				58D60BCE29C85DB8003A1D65 /* Sources */,
+				58D60BCF29C85DB8003A1D65 /* Frameworks */,
+				58D60BD029C85DB8003A1D65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58D60BD529C85DB8003A1D65 /* PBXTargetDependency */,
+			);
+			name = "SiaraShield-iOSTests";
+			productName = "SiaraShield-iOSTests";
+			productReference = 58D60BD229C85DB8003A1D65 /* SiaraShield-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58D60BBF29C85DB7003A1D65 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					58D60BC729C85DB7003A1D65 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					58D60BD129C85DB8003A1D65 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 58D60BC229C85DB7003A1D65 /* Build configuration list for PBXProject "SiaraShield-iOS" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 58D60BBE29C85DB7003A1D65;
+			productRefGroup = 58D60BC929C85DB7003A1D65 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58D60BC729C85DB7003A1D65 /* SiaraShield-iOS */,
+				58D60BD129C85DB8003A1D65 /* SiaraShield-iOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		58D60BC629C85DB7003A1D65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58D60BE629C86152003A1D65 /* verificationPopUpView.xib in Resources */,
+				58D60C2729C9726F003A1D65 /* SlidingView.xib in Resources */,
+				58D60BEB29C863FB003A1D65 /* Assets.xcassets in Resources */,
+				58D60BF329C8771B003A1D65 /* verifiedGif.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58D60BD029C85DB8003A1D65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58D60BC429C85DB7003A1D65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				588EC12E29CDE107003AA3B5 /* McPickerBarButtonItem.swift in Sources */,
+				58D60C2529C97040003A1D65 /* iOSDropDown.swift in Sources */,
+				588EC13029CDE107003AA3B5 /* McPicker.swift in Sources */,
+				58D60C2929C972D1003A1D65 /* SlidingView.swift in Sources */,
+				588EC0A529CC3F60003AA3B5 /* ProgressHUD.swift in Sources */,
+				58D60C8029CAB944003A1D65 /* submitCaptchaViewModel.swift in Sources */,
+				588EC12F29CDE107003AA3B5 /* McTextField.swift in Sources */,
+				58D60C3229C9A1B3003A1D65 /* EndPoint.swift in Sources */,
+				58D60C2F29C99F38003A1D65 /* FirstViewModel.swift in Sources */,
+				588EC12D29CDE107003AA3B5 /* McPickerPopoverViewController.swift in Sources */,
+				58D60BE529C86152003A1D65 /* verificationPopUpView.swift in Sources */,
+				58D60C2C29C98506003A1D65 /* SiaraShieldModelClass.swift in Sources */,
+				58D60C3429C9B146003A1D65 /* Constant.swift in Sources */,
+				58D60BCD29C85DB7003A1D65 /* SiaraShield_iOS.docc in Sources */,
+				58D60C8229CAB944003A1D65 /* GenerateCaptchaViewModel.swift in Sources */,
+				58D60C8129CAB944003A1D65 /* CaptchaVerifyViewModel.swift in Sources */,
+				58D60BF129C876C3003A1D65 /* extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58D60BCE29C85DB8003A1D65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		58D60BD529C85DB8003A1D65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58D60BC729C85DB7003A1D65 /* SiaraShield-iOS */;
+			targetProxy = 58D60BD429C85DB8003A1D65 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		58D60BDA29C85DB8003A1D65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		58D60BDB29C85DB8003A1D65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		58D60BDD29C85DB8003A1D65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TestApp.SiaraShield-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		58D60BDE29C85DB8003A1D65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TestApp.SiaraShield-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		58D60BE029C85DB8003A1D65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TestApp.SiaraShield-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		58D60BE129C85DB8003A1D65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TestApp.SiaraShield-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58D60BC229C85DB7003A1D65 /* Build configuration list for PBXProject "SiaraShield-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58D60BDA29C85DB8003A1D65 /* Debug */,
+				58D60BDB29C85DB8003A1D65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58D60BDC29C85DB8003A1D65 /* Build configuration list for PBXNativeTarget "SiaraShield-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58D60BDD29C85DB8003A1D65 /* Debug */,
+				58D60BDE29C85DB8003A1D65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58D60BDF29C85DB8003A1D65 /* Build configuration list for PBXNativeTarget "SiaraShield-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58D60BE029C85DB8003A1D65 /* Debug */,
+				58D60BE129C85DB8003A1D65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58D60BBF29C85DB7003A1D65 /* Project object */;
+}
