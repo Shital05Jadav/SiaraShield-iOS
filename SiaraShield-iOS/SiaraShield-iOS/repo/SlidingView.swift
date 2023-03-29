@@ -1,17 +1,17 @@
 //
-//  SlideToVerifyView.swift
+//  SlidingView.swift
 //  SiaraShield-iOS
 //
-//  Created by ShitalJadav on 29/03/23.
+//  Created by ShitalJadav on 21/03/23.
 //
 
 import UIKit
 
-public class SlideToVerifyView: UIView {
+class SlidingView: UIView {
     
     // MARK: Outlets
     @IBOutlet weak var slidetoverifyLabel: UILabel!
-    @IBOutlet weak var humanLabel: UILabel!
+    @IBOutlet weak var hiddenuserLabel: UILabel!
     @IBOutlet weak var vierifiedLabel: UILabel!
     @IBOutlet weak var gradiantView: UIView!
     @IBOutlet weak var verifygifImg: UIImageView!
@@ -20,7 +20,7 @@ public class SlideToVerifyView: UIView {
     @IBOutlet weak var mainView: UIView!
     
     // MARK: Variables
-     var objfirstViewModel = FirstViewModel()
+    var objfirstViewModel = FirstViewModel()
     var objSubmitCaptcha = submitCaptchaViewModel()
     fileprivate weak var parentController: UIViewController?
     
@@ -48,7 +48,7 @@ public class SlideToVerifyView: UIView {
     }
     
     private func commonInit() {
-        Bundle.main.loadNibNamed("SlideToVerifyView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("SlidingView", owner: self, options: nil)
         addSubview(mainView)
         mainView.bounds = self.bounds
         mainView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -74,7 +74,7 @@ public class SlideToVerifyView: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("VerifyPopUp"), object: nil)
     }
     
-    public func getvalue(vc:UIViewController) {
+    func getvalue(vc:UIViewController) {
         parentController = vc
         if masterUrlId != "" && requestUrl != "" {
             slider.isUserInteractionEnabled = true
@@ -93,7 +93,7 @@ public class SlideToVerifyView: UIView {
                 self.verifygifImg.loadGif(name: "verifiedGif")
                 self.vierifiedLabel.isHidden = false
                 self.slidetoverifyLabel.isHidden = true
-                self.humanLabel.isHidden = true
+                self.hiddenuserLabel.isHidden = true
                 self.slider.setThumbImage(UIImage(), for: .normal)
             } else {
                 self.slider.setValue(0.0, animated: true)
@@ -102,7 +102,7 @@ public class SlideToVerifyView: UIView {
     }
     
     // MARK: Actions
-        @IBAction func slideChangeValue(_ sender: UISlider) {
+    @IBAction func slideChangeValue(_ sender: UISlider) {
         if masterUrlId != "" && requestUrl != "" {
             let value = sender.value
             if value == slider.maximumValue {
@@ -116,7 +116,7 @@ public class SlideToVerifyView: UIView {
                             self.verifygifImg.loadGif(name: "verifiedGif")
                             self.vierifiedLabel.isHidden = false
                             self.slidetoverifyLabel.isHidden = true
-                            self.humanLabel.isHidden = true
+                            self.hiddenuserLabel.isHidden = true
                             self.slider.setThumbImage(UIImage(), for: .normal)
                         }
                     } else {
@@ -140,5 +140,4 @@ public class SlideToVerifyView: UIView {
     }
     
 }
-
 

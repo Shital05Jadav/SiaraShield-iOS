@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class verificationPopUpView: UIViewController {
+class verificationPopUpView: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var protectByLabel: UILabel!
@@ -22,11 +22,11 @@ public class verificationPopUpView: UIViewController {
     
     
     // MARK: Variables
-     var objGenerateCaptcha = GenerateCaptchaViewModel()
-     var objCaptchaVerify = CaptchaVerifyViewModel()
+    var objGenerateCaptcha = GenerateCaptchaViewModel()
+    var objCaptchaVerify = CaptchaVerifyViewModel()
     var isCaptchaShowing : Bool = false
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         ProgressHUD.show()
         protectedByBtn.semanticContentAttribute = UIApplication.shared
@@ -177,7 +177,7 @@ public class verificationPopUpView: UIViewController {
 }
 
 extension verificationPopUpView : UITextFieldDelegate {
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let maxLength = 4
         let currentString = (textField.text ?? "") as NSString
         let newString = currentString.replacingCharacters(in: range, with: string)
@@ -185,7 +185,7 @@ extension verificationPopUpView : UITextFieldDelegate {
         return newString.count <= maxLength
     }
     
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("return pressed")
         textField.resignFirstResponder()
         if captcha != "" {

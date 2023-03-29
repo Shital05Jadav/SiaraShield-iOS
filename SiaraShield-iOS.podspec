@@ -29,13 +29,13 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
  
   s.ios.deployment_target = '13.0'
-  s.source_files = 'SiaraShield-iOS/Classes/**/*'
+  s.source_files = 'SiaraShield-iOS/SiaraShield-iOS/**/*'
   
   # s.resource_bundles = {
   #   'SiaraShield-iOS' => ['SiaraShield-iOS/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  # s.public_header_files = 'Pod/SiaraShield-iOS/**/*.h'
    s.frameworks = 'UIKit'
    s.swift_versions = '5.0'
 end
