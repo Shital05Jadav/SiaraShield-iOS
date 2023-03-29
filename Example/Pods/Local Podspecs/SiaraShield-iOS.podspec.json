@@ -1,0 +1,22 @@
+{
+  "name": "SiaraShield-iOS",
+  "version": "0.1.0",
+  "summary": "A short description of SiaraShield-iOS.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Shital Jadav/SiaraShield-iOS",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Shital Jadav": "shineinfosoft24@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Shital Jadav/SiaraShield-iOS.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "SiaraShield-iOS/Classes/**/*"
+}

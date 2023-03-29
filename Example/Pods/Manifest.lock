@@ -1,0 +1,16 @@
+PODS:
+  - SiaraShield-iOS (0.1.0)
+
+DEPENDENCIES:
+  - SiaraShield-iOS (from `../`)
+
+EXTERNAL SOURCES:
+  SiaraShield-iOS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SiaraShield-iOS: 115a00003437401aed528d2cfc8a7f372a82f4cc
+
+PODFILE CHECKSUM: 3f49119f7792403504a0a79ca3eeca62e20b2238
+
+COCOAPODS: 1.12.0
