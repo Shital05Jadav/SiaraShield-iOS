@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SiaraShield-iOS'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of SiaraShield-iOS.'
+  s.summary          = 'A small framework for verification'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,18 +18,17 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  A small framework for verification and related api call
                        DESC
 
-  s.homepage         = 'https://github.com/Shital Jadav/SiaraShield-iOS'
+  s.homepage         = 'https://github.com/Shital05Jadav/SiaraShield-iOS'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Shital Jadav' => 'shineinfosoft24@gmail.com' }
-  s.source           = { :git => 'https://github.com/Shital Jadav/SiaraShield-iOS.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/Shital05Jadav/SiaraShield-iOS.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '10.0'
-
+ 
+  s.ios.deployment_target = '13.0'
   s.source_files = 'SiaraShield-iOS/Classes/**/*'
   
   # s.resource_bundles = {
@@ -37,6 +36,6 @@ TODO: Add long description of the pod here.
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.frameworks = 'UIKit'
+   s.swift_versions = '5.0'
 end

@@ -43,10 +43,10 @@
 		7CC13B3165EA42991D1FA004 /* Pods_SiaraShield_iOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SiaraShield_iOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF0E85C34AE5744471F0E42 /* Pods_SiaraShield_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SiaraShield_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2865793A30CCF89AB1AE93 /* Pods-SiaraShield-iOS_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiaraShield-iOS_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SiaraShield-iOS_Tests/Pods-SiaraShield-iOS_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		A5CD5F8BCA37EB937DE80765 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		AC46F34633D1281DF48AAFB8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		A5CD5F8BCA37EB937DE80765 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		AC46F34633D1281DF48AAFB8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		DAF65E71716AB841F882F3B3 /* Pods-SiaraShield-iOS_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiaraShield-iOS_Tests.release.xcconfig"; path = "Target Support Files/Pods-SiaraShield-iOS_Tests/Pods-SiaraShield-iOS_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		DC2FB62549499B3B7A876CEC /* SiaraShield-iOS.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = "SiaraShield-iOS.podspec"; path = "../SiaraShield-iOS.podspec"; sourceTree = "<group>"; };
+		DC2FB62549499B3B7A876CEC /* SiaraShield-iOS.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "SiaraShield-iOS.podspec"; path = "../SiaraShield-iOS.podspec"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,6 @@
 				8D2865793A30CCF89AB1AE93 /* Pods-SiaraShield-iOS_Tests.debug.xcconfig */,
 				DAF65E71716AB841F882F3B3 /* Pods-SiaraShield-iOS_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

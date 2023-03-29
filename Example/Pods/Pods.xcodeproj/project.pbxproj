@@ -11,7 +11,6 @@
 		0D4E107088006F4DB7563A3E6F5A8732 /* Pods-SiaraShield-iOS_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 727669BED337BCDFFC18DC572BD8CD11 /* Pods-SiaraShield-iOS_Example-dummy.m */; };
 		236BA05A124F318242C98F157D1F97DA /* SiaraShield-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DC2168169BE711207B1310013A5EA60 /* SiaraShield-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		313174F3392CC2B6A2A27C8DE0506158 /* SiaraShield-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3040DFCF73FA4DDB5A720613008F63 /* SiaraShield-iOS-dummy.m */; };
-		3623C1553AFF15E183893126FC6B84E9 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329D601FE9F590AF83D7E14B5D2E0B19 /* ReplaceMe.swift */; };
 		75A5C1F5E954924ADCC19CF55938789B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		BC8582639993A80C01C7737FFAA4D89A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		C6A77A225F4E68487A4E18791E4B160A /* Pods-SiaraShield-iOS_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 711FCEF003E82BFD8428DAFAE450FAAD /* Pods-SiaraShield-iOS_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,12 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000F65E6964AAC0677D63962464026D1 /* SiaraShield-iOS.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "SiaraShield-iOS.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		116E0F73B52FC7AA067BCD4E3FB888C8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		000F65E6964AAC0677D63962464026D1 /* SiaraShield-iOS.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "SiaraShield-iOS.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		116E0F73B52FC7AA067BCD4E3FB888C8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		1BD854851BD0A77E3812BB5568E77104 /* Pods-SiaraShield-iOS_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SiaraShield-iOS_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		1DC2168169BE711207B1310013A5EA60 /* SiaraShield-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SiaraShield-iOS-umbrella.h"; sourceTree = "<group>"; };
 		29DB64100F6AE13DD162C320095824B2 /* Pods-SiaraShield-iOS_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SiaraShield-iOS_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		329D601FE9F590AF83D7E14B5D2E0B19 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = "SiaraShield-iOS/Classes/ReplaceMe.swift"; sourceTree = "<group>"; };
 		3515D941DD50EA3303A5303795BCFD61 /* Pods-SiaraShield-iOS_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SiaraShield-iOS_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		3AAEC6FE118D31FE49B53CC1CEF17D2A /* SiaraShield-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SiaraShield-iOS-prefix.pch"; sourceTree = "<group>"; };
 		3D6C139C54A3E8D1D8037F17CD3345E1 /* Pods-SiaraShield-iOS_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SiaraShield-iOS_Tests"; path = Pods_SiaraShield_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +53,7 @@
 		66BF9F1E2899EFAC2F9C59715A0B4C10 /* Pods-SiaraShield-iOS_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SiaraShield-iOS_Tests-Info.plist"; sourceTree = "<group>"; };
 		69E6345C473A2869969E9926CB072D6E /* Pods-SiaraShield-iOS_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SiaraShield-iOS_Tests-umbrella.h"; sourceTree = "<group>"; };
 		6B9D397104C0DD052504C2EE4F548FCF /* Pods-SiaraShield-iOS_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SiaraShield-iOS_Tests-dummy.m"; sourceTree = "<group>"; };
-		6C57ABF837183A4F9C9F08EFA63D2B0D /* Pods-SiaraShield-iOS_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SiaraShield-iOS_Example"; path = Pods_SiaraShield_iOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C57ABF837183A4F9C9F08EFA63D2B0D /* Pods_SiaraShield_iOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SiaraShield_iOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DE55765A1C4C9D7F440C215E0797AC0 /* SiaraShield-iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "SiaraShield-iOS"; path = SiaraShield_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		711FCEF003E82BFD8428DAFAE450FAAD /* Pods-SiaraShield-iOS_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SiaraShield-iOS_Example-umbrella.h"; sourceTree = "<group>"; };
 		71AE77C7949863A2A22D2AE7C71EA3A5 /* SiaraShield-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SiaraShield-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,10 +61,10 @@
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7C771B1622C56E955D3E87BA158ECE95 /* Pods-SiaraShield-iOS_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SiaraShield-iOS_Example-Info.plist"; sourceTree = "<group>"; };
 		8C902D72C54846F3259C3CE6B1182C31 /* Pods-SiaraShield-iOS_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SiaraShield-iOS_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F64E100B9BD95B9A3A2E02D150D2809 /* Pods-SiaraShield-iOS_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SiaraShield-iOS_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AF3040DFCF73FA4DDB5A720613008F63 /* SiaraShield-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SiaraShield-iOS-dummy.m"; sourceTree = "<group>"; };
-		CCEC2B29B0937D7332B8520D703DEAE4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		CCEC2B29B0937D7332B8520D703DEAE4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D20C7E814FDB740242D3960EA8706F54 /* Pods-SiaraShield-iOS_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SiaraShield-iOS_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E27A4FE087AD6B89E0847414EFE04785 /* Pods-SiaraShield-iOS_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SiaraShield-iOS_Tests.modulemap"; sourceTree = "<group>"; };
 		EA061BEED8D555D5781EF0715476C707 /* Pods-SiaraShield-iOS_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SiaraShield-iOS_Example.modulemap"; sourceTree = "<group>"; };
@@ -103,7 +101,7 @@
 		03AADC2D608219B9A2F58E79B8257D21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6C57ABF837183A4F9C9F08EFA63D2B0D /* Pods-SiaraShield-iOS_Example */,
+				6C57ABF837183A4F9C9F08EFA63D2B0D /* Pods_SiaraShield_iOS_Example.framework */,
 				3D6C139C54A3E8D1D8037F17CD3345E1 /* Pods-SiaraShield-iOS_Tests */,
 				6DE55765A1C4C9D7F440C215E0797AC0 /* SiaraShield-iOS */,
 			);
@@ -178,7 +176,6 @@
 		B4DE69FFB3F823BF72CD96280E1D736E /* SiaraShield-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				329D601FE9F590AF83D7E14B5D2E0B19 /* ReplaceMe.swift */,
 				DF40400D10A95E25CD34DBCE4A3C44BA /* Pod */,
 				510AAC11880807D677CF90171AF00344 /* Support Files */,
 			);
@@ -287,7 +284,7 @@
 			);
 			name = "Pods-SiaraShield-iOS_Example";
 			productName = Pods_SiaraShield_iOS_Example;
-			productReference = 6C57ABF837183A4F9C9F08EFA63D2B0D /* Pods-SiaraShield-iOS_Example */;
+			productReference = 6C57ABF837183A4F9C9F08EFA63D2B0D /* Pods_SiaraShield_iOS_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		AFB1AC7B75BB2BC470824A9EDCFF9554 /* Pods-SiaraShield-iOS_Tests */ = {
@@ -317,6 +314,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					4BDB88A11635D5ED6E35919D905815FA = {
+						LastSwiftMigration = 1340;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -375,7 +377,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3623C1553AFF15E183893126FC6B84E9 /* ReplaceMe.swift in Sources */,
 				313174F3392CC2B6A2A27C8DE0506158 /* SiaraShield-iOS-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +412,7 @@
 			baseConfigurationReference = D20C7E814FDB740242D3960EA8706F54 /* Pods-SiaraShield-iOS_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -433,6 +435,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -529,8 +532,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -606,6 +608,7 @@
 			baseConfigurationReference = 3D75D6218483D7FF6ABD8BB8D54FB1BC /* Pods-SiaraShield-iOS_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -628,6 +631,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
