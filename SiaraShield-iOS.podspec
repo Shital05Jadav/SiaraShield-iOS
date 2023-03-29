@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
   # }
 
  s.resource_bundles = {
-    'SiaraShield-iOS' => ['SiaraShield-iOS/SiaraShield-iOS/**']
+    'SiaraShield-iOS' => ['SiaraShield-iOS/**']
   }
   # s.public_header_files = 'Pod/SiaraShield-iOS/**/*.h'
    s.frameworks = 'UIKit'
