@@ -26,19 +26,17 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Shital Jadav' => 'shineinfosoft24@gmail.com' }
   s.source           = { :git => 'https://github.com/Shital05Jadav/SiaraShield-iOS.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
  
   s.ios.deployment_target = '13.0'
-  s.source_files = 'SiaraShield-iOS/SiaraShield-iOS/**/*'
+  s.source_files = 'SiaraShield-iOS/**/*.{h,m,swift,xib}'
   
   # s.resource_bundles = {
   #   'SiaraShield-iOS' => ['SiaraShield-iOS/Assets/*.png']
   # }
 
  s.resource_bundles = {
-    'SiaraShield-iOS' => ['SiaraShield-iOS/**']
+    'SiaraShield-iOS' => ['SiaraShield-iOS/**/*']
   }
-  # s.public_header_files = 'Pod/SiaraShield-iOS/**/*.h'
    s.frameworks = 'UIKit'
    s.swift_versions = '5.0'
 end

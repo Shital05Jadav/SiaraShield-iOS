@@ -1,6 +1,0 @@
-framework module SiaraShield_iOS {
-  umbrella header "SiaraShield-iOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
