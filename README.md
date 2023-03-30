@@ -1,10 +1,5 @@
 # SiaraShield-iOS
 
-[![CI Status](https://img.shields.io/travis/Shital Jadav/SiaraShield-iOS.svg?style=flat)](https://travis-ci.org/Shital Jadav/SiaraShield-iOS)
-[![Version](https://img.shields.io/cocoapods/v/SiaraShield-iOS.svg?style=flat)](https://cocoapods.org/pods/SiaraShield-iOS)
-[![License](https://img.shields.io/cocoapods/l/SiaraShield-iOS.svg?style=flat)](https://cocoapods.org/pods/SiaraShield-iOS)
-[![Platform](https://img.shields.io/cocoapods/p/SiaraShield-iOS.svg?style=flat)](https://cocoapods.org/pods/SiaraShield-iOS)
-
 It's a Swift Library to support Verification in iOS
 
 https://user-images.githubusercontent.com/128694120/227514280-31976295-3964-4a5d-a3c4-cbeb764d5fa0.mov
@@ -41,9 +36,6 @@ https://user-images.githubusercontent.com/128694120/227514349-65e44099-4fd7-4c01
  //Add the view controller to method getvalue
  slideview.getvalue(vc: self)
 
-## Author
-
-Shital Jadav, shineinfosoft24@gmail.com
 
 ## License
 
