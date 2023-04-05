@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#include <ifaddrs.h>
 //! Project version number for SiaraShield_iOS.
 FOUNDATION_EXPORT double SiaraShield_iOSVersionNumber;
 

@@ -27,9 +27,9 @@ Pod::Spec.new do |s|
   s.author           = { 'Shital Jadav' => 'shineinfosoft24@gmail.com' }
   s.source           = { :git => 'https://github.com/Shital05Jadav/SiaraShield-iOS.git', :tag => s.version.to_s }
  
-  s.ios.deployment_target = '13.0'
+  s.ios.deployment_target = '12.0'
   s.source_files = 'SiaraShield-iOS/**/*.{h,m,swift,xib,xcassets}'
-  
+  s.resources = 'SiaraShield-iOS/**/*.{xcassets}'
 
  #s.resource_bundles = {
    # 'SiaraShield-iOS' => ['SiaraShield-iOS/**/*']
