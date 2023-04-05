@@ -17,7 +17,7 @@ class submitCaptchaViewModel: NSObject {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.POST.rawValue
         submitCaptchaReq.masterUrlId = masterUrlId
-        submitCaptchaReq.deviceIp = deviceIp ?? ""
+        submitCaptchaReq.deviceIp = deviceIp[1]
         submitCaptchaReq.deviceName = deviceName
         submitCaptchaReq.browserIdentity = browserIdentity
         submitCaptchaReq.strProtocol = protocol_Value
@@ -32,14 +32,14 @@ class submitCaptchaViewModel: NSObject {
         } else {
             completion(false)
         }
-
+        
         guard let jsonObj = try submitCaptchaReq.dictionary else {
             return
         }
         if (!JSONSerialization.isValidJSONObject(jsonObj)) {
-               print("is not a valid json object")
-               return
-           }
+            print("is not a valid json object")
+            return
+        }
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: jsonObj, options: []) else {
             return
@@ -55,12 +55,12 @@ class submitCaptchaViewModel: NSObject {
                 return
             }
             do {
-              
+                
                 if let resData = data {
                     if let json = (try? JSONSerialization.jsonObject(with: resData, options: [])) as? Dictionary<String,AnyObject>
-                                       {
-                                           let msg = json["Message"] as? String
-                        if msg == "Sucess" || msg == "sucess" {
+                    {
+                        let msg = json["Message"] as? String
+                        if msg == "Success" || msg == "success" {
                             completion(true)
                         } else if msg == "fail" || msg == "Fail" {
                             completion(false)
@@ -73,13 +73,7 @@ class submitCaptchaViewModel: NSObject {
                     completion(false)
                 }
             }
-            catch {
-                print("JSONSerialization error:", error)
-                completion(false)
-            }
-            
         }.resume()
     }
-    
-}
 
+}

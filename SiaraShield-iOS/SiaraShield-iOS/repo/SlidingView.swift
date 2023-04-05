@@ -7,26 +7,40 @@
 
 import UIKit
 
+protocol SlidingViewDelegate {
+    func verifiedtoken()
+}
+
 class SlidingView: UIView {
     
     // MARK: Outlets
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var slidetoverifyLabel: UILabel!
     @IBOutlet weak var hiddenuserLabel: UILabel!
     @IBOutlet weak var vierifiedLabel: UILabel!
     @IBOutlet weak var gradiantView: UIView!
     @IBOutlet weak var verifygifImg: UIImageView!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var submitView: UIView!
     @IBOutlet weak var sliderView: UIView!
     @IBOutlet weak var mainView: UIView!
     
     // MARK: Variables
     var objfirstViewModel = FirstViewModel()
     var objSubmitCaptcha = submitCaptchaViewModel()
+    var objVerifyToken = ValidateTokenViewModel()
     fileprivate weak var parentController: UIViewController?
+    var delegate: SlidingViewDelegate?
     
-    @IBInspectable public var masterUrlIdValue: String = "" {
+    @IBInspectable public var publicKeyValue: String = "" {
         didSet {
-            masterUrlId = masterUrlIdValue
+            masterUrlId = publicKeyValue
+        }
+    }
+    
+    @IBInspectable public var privateKeyValue: String = "" {
+        didSet {
+            privateKey = privateKeyValue
         }
     }
     
@@ -35,7 +49,6 @@ class SlidingView: UIView {
             requestUrl = requestUrlValue
         }
     }
-    
     
     init(frame: CGRect,VC: UIViewController) {
         super.init(frame: frame)
@@ -55,10 +68,13 @@ class SlidingView: UIView {
         mainView.layer.cornerRadius = 10
         sliderView.layer.cornerRadius = 20
         gradiantView.layer.cornerRadius = 20
+        submitButton.layer.cornerRadius = 5
         mainView.layer.shadowColor = UIColor.lightGray.cgColor
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = CGSize.zero
         mainView.layer.shadowRadius = 7
+        submitView.isHidden = true
+        submitButton.isUserInteractionEnabled = false
         let gradientLayer:CAGradientLayer = CAGradientLayer()
         gradientLayer.frame = self.gradiantView.bounds
         gradientLayer.colors =
@@ -95,6 +111,14 @@ class SlidingView: UIView {
                 self.slidetoverifyLabel.isHidden = true
                 self.hiddenuserLabel.isHidden = true
                 self.slider.setThumbImage(UIImage(), for: .normal)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                    self.submitView.isHidden = false
+                    self.submitButton.isUserInteractionEnabled = true
+                    self.mainView.layer.shadowColor = UIColor.clear.cgColor
+                    self.mainView.layer.shadowOpacity = 0
+                    self.mainView.layer.shadowOffset = CGSize.zero
+                    self.mainView.layer.shadowRadius = 0
+                }
             } else {
                 self.slider.setValue(0.0, animated: true)
             }
@@ -102,6 +126,20 @@ class SlidingView: UIView {
     }
     
     // MARK: Actions
+    @IBAction func OnTapSubmitButton(_ sender: UIButton) {
+        ProgressHUD.show()
+        self.objVerifyToken.validatetokenAPICall() { isSuccess in
+            DispatchQueue.main.async {
+                ProgressHUD.dismiss()
+                if isSuccess {
+                    self.delegate?.verifiedtoken()
+                } else {
+                    self.parentController?.presentAlert(withTitle: "Error", message: "Token validation failed.")
+                }
+            }
+        }
+    }
+    
     @IBAction func slideChangeValue(_ sender: UISlider) {
         if masterUrlId != "" && requestUrl != "" {
             let value = sender.value

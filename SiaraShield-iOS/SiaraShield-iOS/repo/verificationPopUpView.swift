@@ -35,25 +35,25 @@ class verificationPopUpView: UIViewController {
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         protectedByBtn.setImage(tintedImage, for: .normal)
         protectedByBtn.tintColor = .lightGray
-         objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
-         DispatchQueue.main.async {
-         ProgressHUD.dismiss()
-         if isSuccess{
-         if captcha != "" {
-         if let imageURL = UIImage.gif(url: captcha) {
-         self.lettrsview.image = imageURL
-         } else {
-         self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
-         }
-         
-         } else {
-         self.presentAlert(withTitle: "Captcha", message: "Captcha not found!")
-         }
-         } else {
-         self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
-         }
-         }
-         }
+        objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
+            DispatchQueue.main.async {
+                ProgressHUD.dismiss()
+                if isSuccess{
+                    if captcha != "" {
+                        if let imageURL = UIImage.gif(url: captcha) {
+                            self.lettrsview.image = imageURL
+                        } else {
+                            self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
+                        }
+                        
+                    } else {
+                        self.presentAlert(withTitle: "Captcha", message: "Captcha not found!")
+                    }
+                } else {
+                    self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
+                }
+            }
+        }
         protectedByBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         mainView.layer.cornerRadius = 10
         mainView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -70,7 +70,7 @@ class verificationPopUpView: UIViewController {
         txtSecretcode.delegate = self
         txtSecretcode.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: txtSecretcode.frame.height))
         txtSecretcode.leftViewMode = .always
-       
+        
         self.moreBtn.setTitle("", for: .normal)
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(self.onTapPrivacyPolicy))
         privacyPolicyLabel.isUserInteractionEnabled = true
@@ -83,19 +83,19 @@ class verificationPopUpView: UIViewController {
     // MARK: Functions
     @objc func onTapPrivacyPolicy(sender:UITapGestureRecognizer) {
         guard let url = URL(string: "https://www.cybersiara.com/privacy") else {
-             return
+            return
         }
         if UIApplication.shared.canOpenURL(url) {
-             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
     @objc func onTapProtectedBy(sender:UITapGestureRecognizer) {
         guard let url = URL(string: "https://www.cybersiara.com/terms") else {
-             return
+            return
         }
         if UIApplication.shared.canOpenURL(url) {
-             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
@@ -105,24 +105,24 @@ class verificationPopUpView: UIViewController {
             if let name = selections[0] {
                 if name == "Accessibility" {
                     guard let url = URL(string: "https://www.cybersiara.com/accessibility") else {
-                         return
+                        return
                     }
                     if UIApplication.shared.canOpenURL(url) {
-                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     }
                 } else if name == "Report Image" {
                     guard let url = URL(string: "https://mycybersiara.com/ReportBug?rt=b&d=https://staging.mycybersiara.com/Login/TestingPage") else {
-                         return
+                        return
                     }
                     if UIApplication.shared.canOpenURL(url) {
-                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     }
                 } else if name == "Report Bug" {
                     guard let url = URL(string: "https://mycybersiara.com/ReportBug?rt=b&d=https://staging.mycybersiara.com/Login/TestingPage") else {
-                         return
+                        return
                     }
                     if UIApplication.shared.canOpenURL(url) {
-                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     }
                 }
             }

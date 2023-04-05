@@ -23,7 +23,7 @@ class FirstViewModel: NSObject {
         firstReq.masterUrlId = masterUrlId
         firstReq.requestUrl = requestUrl
         firstReq.browserIdentity = browserIdentity
-        firstReq.deviceIp = deviceIp ?? ""
+        firstReq.deviceIp = deviceIp[1]
         firstReq.deviceType = deviceType
         firstReq.deviceBrowser = deviceBrowser
         firstReq.deviceName = deviceName
@@ -54,7 +54,6 @@ class FirstViewModel: NSObject {
                 return
             }
             do {
-                let decoder = JSONDecoder()
                 if let resData = data {
                     if let json = (try? JSONSerialization.jsonObject(with: resData, options: [])) as? Dictionary<String,AnyObject>
                                        {
@@ -69,27 +68,9 @@ class FirstViewModel: NSObject {
                             }
                         }
                     }
-                    let firstData = try decoder.decode(firstResponse.self, from: resData)
-                    
-                    if let statusCode = firstData.HttpStatusCode {
-                        
-                        print(statusCode)
-                        if statusCode == 200 || statusCode == 0  {
-                            if let reqId = firstData.RequestId {
-                                requestId = reqId
-                            }
-                            if let visId = firstData.Visiter_Id {
-                                visiter_Id = visId
-                            }
-                        }
-                    }
-                   
                 } else {
                     print("No Data Found")
                 }
-            }
-            catch {
-                print("JSONSerialization error:", error)
             }
             
         }.resume()

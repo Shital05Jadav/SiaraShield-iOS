@@ -54,6 +54,10 @@ final class EndPoint: NSObject {
         return baseURL + "SubmitCaptcha/SubmitCaptchInfoForAndroid"
     }
 
+    func validateToken() -> String {
+        return baseURL + "validate-token"
+    }
+    
     // MARK: - Network Response flags
     public func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String>{
         switch response.statusCode {

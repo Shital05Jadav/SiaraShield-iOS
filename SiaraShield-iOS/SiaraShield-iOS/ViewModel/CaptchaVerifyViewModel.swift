@@ -16,7 +16,7 @@ class CaptchaVerifyViewModel: NSObject {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.POST.rawValue
         captchaVerifyReq.masterUrlId = masterUrlId
-        captchaVerifyReq.deviceIp = deviceIp ?? ""
+        captchaVerifyReq.deviceIp = deviceIp[1]
         captchaVerifyReq.deviceType = deviceType
         captchaVerifyReq.deviceName = deviceName
         captchaVerifyReq.userCaptcha = userCaptcha
@@ -25,17 +25,17 @@ class CaptchaVerifyViewModel: NSObject {
         captchaVerifyReq.timespent = "24"
         captchaVerifyReq.strProtocol = protocol_Value
         captchaVerifyReq.flag = "1"
-        captchaVerifyReq.second = "2"
+        captchaVerifyReq.second = "60"
         captchaVerifyReq.requestID = requestId
-        captchaVerifyReq.fillupsecond = "8"
-
+        captchaVerifyReq.fillupsecond = "60"
+        
         guard let jsonObj = try captchaVerifyReq.dictionary else {
             return
         }
         if (!JSONSerialization.isValidJSONObject(jsonObj)) {
-               print("is not a valid json object")
-               return
-           }
+            print("is not a valid json object")
+            return
+        }
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: jsonObj, options: []) else {
             return
@@ -51,16 +51,20 @@ class CaptchaVerifyViewModel: NSObject {
                 return
             }
             do {
-                let decoder = JSONDecoder()
                 if let resData = data {
                     if let json = (try? JSONSerialization.jsonObject(with: resData, options: [])) as? Dictionary<String,AnyObject>
                     {
                         if let msg = json["Message"] as? String {
-                            if msg == "Sucess" || msg == "sucess" {
+                            if msg == "Success" || msg == "success" {
+                                if let tokenVal = json["data"] as? String {
+                                    token = tokenVal
+                                }
                                 completion(true)
                             } else if msg == "fail" || msg == "Fail" {
                                 completion(false)
-                            } else {
+                            } else if msg == "" {
+                                completion(true)
+                            }else {
                                 completion(false)
                             }
                         } else {
@@ -70,17 +74,6 @@ class CaptchaVerifyViewModel: NSObject {
                     else {
                         completion(false)
                     }
-//                    let verifyData = try decoder.decode(captchaVerifyResponse.self, from: resData)
-//
-//                    if let statusCode = verifyData.HttpStatusCode {
-//
-//                        print(statusCode)
-//                        if statusCode == 200 || statusCode == 0  {
-//                           completion(true)
-//                        } else {
-//                            completion(false)
-//                        }
-//                    }
                     
                 } else {
                     print("No Data Found")
