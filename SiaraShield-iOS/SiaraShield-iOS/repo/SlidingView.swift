@@ -88,8 +88,8 @@ public class SlidingView: UIView {
         verifygifImg.loadGif(name: "verifiedGif")
         verifygifImg.isHidden = true
         vierifiedLabel.isHidden = true
-        submitButton.isHidden = false
-        submitButton.isUserInteractionEnabled = true
+        submitButton.isHidden = true
+        submitButton.isUserInteractionEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("VerifyPopUp"), object: nil)
     }
     
@@ -172,6 +172,8 @@ public class SlidingView: UIView {
                             self.slidetoverifyLabel.isHidden = true
                             self.hiddenuserLabel.isHidden = true
                             self.slider.setThumbImage(UIImage(), for: .normal)
+                            self.submitButton.isHidden = false
+                            self.submitButton.isUserInteractionEnabled = true
                         }
                     } else {
                         DispatchQueue.main.async {
