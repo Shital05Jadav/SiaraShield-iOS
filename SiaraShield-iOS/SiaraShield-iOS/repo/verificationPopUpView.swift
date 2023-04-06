@@ -36,12 +36,13 @@ class verificationPopUpView: UIViewController {
         protectedByBtn.setImage(tintedImage, for: .normal)
         protectedByBtn.tintColor = .lightGray
         objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
-            DispatchQueue.main.async {
                 ProgressHUD.dismiss()
                 if isSuccess{
                     if captcha != "" {
                         if let imageURL = UIImage.gif(url: captcha) {
+                            DispatchQueue.main.async {
                             self.lettrsview.image = imageURL
+                            }
                         } else {
                             self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
                         }
@@ -52,7 +53,6 @@ class verificationPopUpView: UIViewController {
                 } else {
                     self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
                 }
-            }
         }
         protectedByBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         mainView.layer.cornerRadius = 10
@@ -132,12 +132,13 @@ class verificationPopUpView: UIViewController {
     @IBAction func onTapRefresh(_ sender: UIButton) {
         ProgressHUD.show()
         objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
-            DispatchQueue.main.async {
                 ProgressHUD.dismiss()
                 if isSuccess{
                     if captcha != "" {
                         if let imageURL = UIImage.gif(url: captcha) {
+                            DispatchQueue.main.async {
                             self.lettrsview.image = imageURL
+                            }
                         } else {
                             self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
                         }
@@ -147,7 +148,6 @@ class verificationPopUpView: UIViewController {
                 } else {
                     self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
                 }
-            }
         }
         
     }

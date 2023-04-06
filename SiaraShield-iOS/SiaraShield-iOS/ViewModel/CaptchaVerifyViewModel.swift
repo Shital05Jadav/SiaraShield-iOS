@@ -15,7 +15,7 @@ class CaptchaVerifyViewModel: NSObject {
         let url = EndPoint.shared.captchaVerifyURL()
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.POST.rawValue
-        captchaVerifyReq.masterUrlId = masterUrlId
+     /*   captchaVerifyReq.masterUrl = masterUrlId
         captchaVerifyReq.deviceIp = deviceIp[1]
         captchaVerifyReq.deviceType = deviceType
         captchaVerifyReq.deviceName = deviceName
@@ -25,13 +25,30 @@ class CaptchaVerifyViewModel: NSObject {
         captchaVerifyReq.timespent = "24"
         captchaVerifyReq.strProtocol = protocol_Value
         captchaVerifyReq.flag = "1"
-        captchaVerifyReq.second = "60"
+        captchaVerifyReq.second = "2"
         captchaVerifyReq.requestID = requestId
-        captchaVerifyReq.fillupsecond = "60"
-        
-        guard let jsonObj = try captchaVerifyReq.dictionary else {
+        captchaVerifyReq.fillupsecond = "8"
+        debugPrint(captchaVerifyReq)
+        guard let jsonObj = captchaVerifyReq.dictionary else {
             return
-        }
+        }*/
+        let jsonObj:Dictionary<String, Any> = [
+        "MasterUrl":masterUrlId,
+        "DeviceIp":deviceIp[1],
+        "DeviceType":deviceType,
+        "DeviceName":deviceName,
+        "UserCaptcha":userCaptcha,
+        "ByPass":"Netural",
+        "BrowserIdentity":browserIdentity,
+        "Timespent":"24",
+        "Protocol":protocol_Value,
+        "Flag":"1",
+        "second":"2",
+        "RequestID":requestId,
+        "VisiterId":visiter_Id,
+        "fillupsecond":"8"
+        ]
+        debugPrint(jsonObj)
         if (!JSONSerialization.isValidJSONObject(jsonObj)) {
             print("is not a valid json object")
             return
@@ -41,6 +58,10 @@ class CaptchaVerifyViewModel: NSObject {
             return
         }
         request.httpBody = httpBody
+        let header = [
+                "Content-Type" : "application/json"
+            ]
+        request.allHTTPHeaderFields = header
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let response = response {
@@ -54,6 +75,7 @@ class CaptchaVerifyViewModel: NSObject {
                 if let resData = data {
                     if let json = (try? JSONSerialization.jsonObject(with: resData, options: [])) as? Dictionary<String,AnyObject>
                     {
+                        debugPrint(json)
                         if let msg = json["Message"] as? String {
                             if msg == "Success" || msg == "success" {
                                 if let tokenVal = json["data"] as? String {
@@ -63,7 +85,7 @@ class CaptchaVerifyViewModel: NSObject {
                             } else if msg == "fail" || msg == "Fail" {
                                 completion(false)
                             } else if msg == "" {
-                                completion(true)
+                                completion(false)
                             }else {
                                 completion(false)
                             }

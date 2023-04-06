@@ -17,21 +17,23 @@ class ValidateTokenViewModel: NSObject {
         
         let header = [
             "Content-Type" : "application/json",
-                "ip" : deviceIp[1],
-                "key" : privateKey
-            ]
-      
+            "ip" : deviceIp[1],
+            "key" : privateKey,
+            "Authorization" : "Bearer \(token)"
+        ]
+        
         
         request.allHTTPHeaderFields = header
-       
-        if token != "" {
-            request.setValue(
-                "Bearer \(token)",
-                forHTTPHeaderField: "Authentication"
-            )
-        } else {
-            completion(false)
-        }
+       debugPrint(header)
+//        if token != "" {
+//            request.setValue(
+//                "Bearer \(token)",
+//                forHTTPHeaderField: "Authentication"
+//            )
+//        } else {
+//            completion(false)
+//        }
+        debugPrint(request)
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse {
@@ -46,6 +48,7 @@ class ValidateTokenViewModel: NSObject {
                 if let resData = data {
                     if let json = (try? JSONSerialization.jsonObject(with: resData, options: [])) as? Dictionary<String,AnyObject>
                     {
+                        debugPrint(json)
                         if let httpStatusCode = json["HttpStatusCode"] as? Int {
                             if httpStatusCode == 200 || httpStatusCode == 0 {
                                 completion(true)

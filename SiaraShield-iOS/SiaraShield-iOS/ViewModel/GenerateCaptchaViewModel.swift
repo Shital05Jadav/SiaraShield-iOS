@@ -15,22 +15,39 @@ class GenerateCaptchaViewModel: NSObject {
         let url = EndPoint.shared.generateCaptchaURL()
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.POST.rawValue
-
-        let jsonObj:Dictionary<String, Any> = [
-        "MasterUrlId":masterUrlId,
-        "RequestUrl":requestUrl,
-        "BrowserIdentity":browserIdentity,
-        "DeviceIp":deviceIp[1],
-        "DeviceType":deviceType,
-        "DeviceBrowser":deviceBrowser,
-        "DeviceName":deviceName,
-        "DeviceHeight":deviceHeight,
-        "DeviceWidth":deviceWidth,
-        "VisiterId":visiter_Id
-            ]
-        if visiter_Id == "" {
+        generateCaptchaReq.masterUrlId = masterUrlId
+        generateCaptchaReq.requestUrl = requestUrl
+        generateCaptchaReq.browserIdentity = browserIdentity
+        generateCaptchaReq.deviceIp = deviceIp[1]
+        generateCaptchaReq.deviceType = deviceType
+        generateCaptchaReq.deviceBrowser = deviceBrowser
+        generateCaptchaReq.deviceName = deviceName
+        generateCaptchaReq.deviceHeight = deviceHeight
+        generateCaptchaReq.deviceWidth = deviceWidth
+        if visiter_Id != "" {
+            generateCaptchaReq.visiterId = visiter_Id
+        } else {
             completion(false)
         }
+        
+
+        guard let jsonObj = generateCaptchaReq.dictionary else {
+            return
+        }
+//        let jsonObj:Dictionary<String, Any> = [
+//        "MasterUrlId":masterUrlId,
+//        "RequestUrl":requestUrl,
+//        "BrowserIdentity":browserIdentity,
+//        "DeviceIp":deviceIp[1],
+//        "DeviceType":deviceType,
+//        "DeviceBrowser":deviceBrowser,
+//        "DeviceName":deviceName,
+//        "DeviceHeight":deviceHeight,
+//        "DeviceWidth":deviceWidth,
+//        "VisiterId": visiter_Id
+//            ]
+        
+        debugPrint(jsonObj)
         if (!JSONSerialization.isValidJSONObject(jsonObj)) {
                print("is not a valid json object")
                return
@@ -59,6 +76,7 @@ class GenerateCaptchaViewModel: NSObject {
                 if let resData = data {
                     if let json = (try? JSONSerialization.jsonObject(with: resData, options: [])) as? Dictionary<String,AnyObject>
                                        {
+                        debugPrint(json)
                         if let msg = json["Message"] as? String {
                             if msg == "Success" || msg == "success" {
                                 if let reqId = json["RequestId"] as? String {

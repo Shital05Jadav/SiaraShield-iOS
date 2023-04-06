@@ -18,8 +18,8 @@ class FirstViewModel: NSObject {
         request.httpMethod = HTTPMethod.POST.rawValue
         
         let header = [
-                "Content-Type" : "application/json"
-            ]
+            "Content-Type" : "application/json"
+        ]
         firstReq.masterUrlId = masterUrlId
         firstReq.requestUrl = requestUrl
         firstReq.browserIdentity = browserIdentity
@@ -29,15 +29,15 @@ class FirstViewModel: NSObject {
         firstReq.deviceName = deviceName
         firstReq.deviceHeight = deviceHeight
         firstReq.deviceWidth = deviceWidth
-
-        guard let jsonObj = try firstReq.dictionary else {
+        debugPrint(firstReq)
+        guard let jsonObj = firstReq.dictionary else {
             return
         }
         
         if (!JSONSerialization.isValidJSONObject(jsonObj)) {
-               print("is not a valid json object")
-               return
-           }
+            print("is not a valid json object")
+            return
+        }
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: jsonObj, options: []) else {
             return
@@ -56,7 +56,8 @@ class FirstViewModel: NSObject {
             do {
                 if let resData = data {
                     if let json = (try? JSONSerialization.jsonObject(with: resData, options: [])) as? Dictionary<String,AnyObject>
-                                       {
+                    {
+                        debugPrint(json)
                         if let httpStatusCode = json["HttpStatusCode"] as? Int {
                             if httpStatusCode == 200 || httpStatusCode == 0 {
                                 if let reqId = json["RequestId"] as? String {

@@ -37,7 +37,7 @@ struct firstRequest : Codable {
 }
 
 struct submitCaptchaRequest : Codable {
-    var masterUrlId : String
+    var masterUrl : String
     var deviceIp : String
     var deviceName :String
     var browserIdentity : String
@@ -52,7 +52,7 @@ struct submitCaptchaRequest : Codable {
     }
     
     init(data : [String:Any]) {
-        self.masterUrlId = data["MasterUrlId"] as? String ?? ""
+        self.masterUrl = data["MasterUrl"] as? String ?? ""
         self.deviceIp = data["DeviceIp"] as? String ?? ""
         self.deviceName = data["DeviceName"] as? String ?? ""
         self.browserIdentity = data["BrowserIdentity"] as? String ?? ""
@@ -94,7 +94,7 @@ struct submitCaptchaRequest : Codable {
     }
     
     struct captchVerifyRequest : Codable {
-        var masterUrlId : String
+        var masterUrl : String
         var deviceIp : String
         var deviceType :String
         var deviceName : String
@@ -114,7 +114,7 @@ struct submitCaptchaRequest : Codable {
         }
         
         init(data : [String:Any]) {
-            self.masterUrlId = data["MasterUrlId"] as? String ?? ""
+            self.masterUrl = data["MasterUrl"] as? String ?? ""
             self.deviceIp = data["DeviceIp"] as? String ?? ""
             self.deviceType = data["DeviceType"] as? String ?? ""
             self.deviceName = data["DeviceName"] as? String ?? ""

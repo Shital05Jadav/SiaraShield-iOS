@@ -16,7 +16,7 @@ class submitCaptchaViewModel: NSObject {
         let url = EndPoint.shared.submitCaptchaURL()
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.POST.rawValue
-        submitCaptchaReq.masterUrlId = masterUrlId
+        submitCaptchaReq.masterUrl = masterUrlId
         submitCaptchaReq.deviceIp = deviceIp[1]
         submitCaptchaReq.deviceName = deviceName
         submitCaptchaReq.browserIdentity = browserIdentity
@@ -32,8 +32,8 @@ class submitCaptchaViewModel: NSObject {
         } else {
             completion(false)
         }
-        
-        guard let jsonObj = try submitCaptchaReq.dictionary else {
+        debugPrint(submitCaptchaReq)
+        guard let jsonObj = submitCaptchaReq.dictionary else {
             return
         }
         if (!JSONSerialization.isValidJSONObject(jsonObj)) {
@@ -59,6 +59,7 @@ class submitCaptchaViewModel: NSObject {
                 if let resData = data {
                     if let json = (try? JSONSerialization.jsonObject(with: resData, options: [])) as? Dictionary<String,AnyObject>
                     {
+                        debugPrint(json)
                         let msg = json["Message"] as? String
                         if msg == "Success" || msg == "success" {
                             completion(true)
@@ -73,7 +74,10 @@ class submitCaptchaViewModel: NSObject {
                     completion(false)
                 }
             }
+            
+            
         }.resume()
     }
-
+    
 }
+

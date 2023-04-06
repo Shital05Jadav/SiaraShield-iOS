@@ -14,6 +14,7 @@ public protocol SlidingViewDelegate {
 public class SlidingView: UIView {
     
     // MARK: Outlets
+    @IBOutlet weak var stackview: UIStackView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var slidetoverifyLabel: UILabel!
     @IBOutlet weak var hiddenuserLabel: UILabel!
@@ -21,7 +22,6 @@ public class SlidingView: UIView {
     @IBOutlet weak var gradiantView: UIView!
     @IBOutlet weak var verifygifImg: UIImageView!
     @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var submitView: UIView!
     @IBOutlet weak var sliderView: UIView!
     @IBOutlet weak var mainView: UIView!
     
@@ -64,9 +64,10 @@ public class SlidingView: UIView {
         let bundle = Bundle(for: self.classForCoder)
         let nib = UINib(nibName: "SlidingView", bundle: bundle)
         nib.instantiate(withOwner: self, options: nil)
-        mainView.bounds = self.bounds
-        addSubview(mainView)
-        mainView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        stackview.bounds = self.bounds
+        addSubview(stackview)
+        stackview.bounds = self.bounds
+        stackview.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         mainView.layer.cornerRadius = 10
         sliderView.layer.cornerRadius = 20
         gradiantView.layer.cornerRadius = 20
@@ -75,8 +76,6 @@ public class SlidingView: UIView {
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = CGSize.zero
         mainView.layer.shadowRadius = 7
-        submitView.isHidden = true
-        submitButton.isUserInteractionEnabled = false
         let gradientLayer:CAGradientLayer = CAGradientLayer()
         gradientLayer.frame = self.gradiantView.bounds
         gradientLayer.colors =
@@ -89,10 +88,12 @@ public class SlidingView: UIView {
         verifygifImg.loadGif(name: "verifiedGif")
         verifygifImg.isHidden = true
         vierifiedLabel.isHidden = true
+        submitButton.isHidden = false
+        submitButton.isUserInteractionEnabled = true
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("VerifyPopUp"), object: nil)
     }
     
-    public func getvalue(vc:UIViewController) {
+   public func getvalue(vc:UIViewController) {
         parentController = vc
         if masterUrlId != "" && requestUrl != "" {
             slider.isUserInteractionEnabled = true
@@ -113,16 +114,19 @@ public class SlidingView: UIView {
                 self.slidetoverifyLabel.isHidden = true
                 self.hiddenuserLabel.isHidden = true
                 self.slider.setThumbImage(UIImage(), for: .normal)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    self.submitView.isHidden = false
-                    self.submitButton.isUserInteractionEnabled = true
-                    self.mainView.layer.shadowColor = UIColor.clear.cgColor
-                    self.mainView.layer.shadowOpacity = 0
-                    self.mainView.layer.shadowOffset = CGSize.zero
-                    self.mainView.layer.shadowRadius = 0
-                }
+                self.submitButton.isHidden = false
+                self.submitButton.isUserInteractionEnabled = true
             } else {
                 self.slider.setValue(0.0, animated: true)
+                self.sliderView.backgroundColor = UIColor.clear
+                self.verifygifImg.isHidden = true
+                self.verifygifImg.isHidden = true
+                self.vierifiedLabel.isHidden = true
+                self.slidetoverifyLabel.isHidden = false
+                self.hiddenuserLabel.isHidden = false
+                self.submitButton.isHidden = true
+                self.slider.setThumbImage(UIImage(named: "rightslider-icon"), for: .normal)
+                self.submitButton.isUserInteractionEnabled = false
             }
         }
     }
@@ -136,6 +140,16 @@ public class SlidingView: UIView {
                 if isSuccess {
                     self.delegate?.verifiedtoken()
                 } else {
+                    self.slider.setValue(0.0, animated: true)
+                    self.sliderView.backgroundColor = UIColor.clear
+                    self.verifygifImg.isHidden = true
+                    self.verifygifImg.isHidden = true
+                    self.vierifiedLabel.isHidden = true
+                    self.slidetoverifyLabel.isHidden = false
+                    self.hiddenuserLabel.isHidden = false
+                    self.submitButton.isHidden = true
+                    self.slider.setThumbImage(UIImage(named: "rightslider-icon"), for: .normal)
+                    self.submitButton.isUserInteractionEnabled = false
                     self.parentController?.presentAlert(withTitle: "Error", message: "Token validation failed.")
                 }
             }
