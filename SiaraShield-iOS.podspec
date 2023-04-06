@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SiaraShield-iOS'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A small framework for verification'
 
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.resources = 'SiaraShield-iOS/**/*.{xcassets}'
 
  s.resource_bundles = {
-    'SiaraShield-iOS' => ['SiaraShield-iOS/**/Assets/*']
+    'SiaraShield-iOS' => 'SiaraShield-iOS/**/*'
   }
    s.frameworks = 'UIKit'
    s.swift_versions = '5.0'
