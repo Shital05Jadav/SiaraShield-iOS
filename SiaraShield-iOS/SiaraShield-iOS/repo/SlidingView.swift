@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol SlidingViewDelegate {
+public protocol SlidingViewDelegate {
     func verifiedtoken()
 }
 
-class SlidingView: UIView {
+public class SlidingView: UIView {
     
     // MARK: Outlets
     @IBOutlet weak var submitButton: UIButton!
@@ -61,9 +61,11 @@ class SlidingView: UIView {
     }
     
     private func commonInit() {
-        Bundle.main.loadNibNamed("SlidingView", owner: self, options: nil)
-        addSubview(mainView)
+        let bundle = Bundle(for: self.classForCoder)
+        let nib = UINib(nibName: "SlidingView", bundle: bundle)
+        nib.instantiate(withOwner: self, options: nil)
         mainView.bounds = self.bounds
+        addSubview(mainView)
         mainView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         mainView.layer.cornerRadius = 10
         sliderView.layer.cornerRadius = 20
@@ -90,7 +92,7 @@ class SlidingView: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("VerifyPopUp"), object: nil)
     }
     
-    func getvalue(vc:UIViewController) {
+    public func getvalue(vc:UIViewController) {
         parentController = vc
         if masterUrlId != "" && requestUrl != "" {
             slider.isUserInteractionEnabled = true
