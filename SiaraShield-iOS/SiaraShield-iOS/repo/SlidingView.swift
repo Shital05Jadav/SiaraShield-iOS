@@ -30,7 +30,7 @@ public class SlidingView: UIView {
     var objSubmitCaptcha = submitCaptchaViewModel()
     var objVerifyToken = ValidateTokenViewModel()
     fileprivate weak var parentController: UIViewController?
-    var delegate: SlidingViewDelegate?
+    public var delegate: SlidingViewDelegate?
     
     @IBInspectable public var publicKeyValue: String = "" {
         didSet {
