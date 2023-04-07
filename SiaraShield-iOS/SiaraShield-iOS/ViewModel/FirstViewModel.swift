@@ -12,7 +12,7 @@ class FirstViewModel: NSObject {
     
     var firstReq = firstRequest()
     
-    func firstAPICall() {
+    func firstAPICall(completion: @escaping( _ ifResult: Bool) -> Void) {
         let url = EndPoint.shared.firstAPIURL()
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.POST.rawValue
@@ -66,11 +66,17 @@ class FirstViewModel: NSObject {
                                 if let visId = json["Visiter_Id"] as? String {
                                     visiter_Id = visId
                                 }
+                                completion(true)
+                            } else {
+                                completion(false)
                             }
                         }
+                    } else {
+                        completion(false)
                     }
                 } else {
                     print("No Data Found")
+                    completion(false)
                 }
             }
             

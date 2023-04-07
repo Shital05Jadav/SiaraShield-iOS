@@ -85,7 +85,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-Hv-OVx">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verifiedGif.gif" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-Hv-OVx">
                                             <rect key="frame" x="146" y="-3" width="44" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="3ok-EL-8kk"/>
@@ -193,6 +193,7 @@
     </objects>
     <resources>
         <image name="logo" width="20" height="20"/>
+        <image name="verifiedGif.gif" width="271" height="261"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

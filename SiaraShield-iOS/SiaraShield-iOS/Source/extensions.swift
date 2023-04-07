@@ -17,6 +17,14 @@ extension UIImageView {
     }
 }
 extension UIImage {
+  public class func gif(asset: String) -> UIImage? {
+    if let asset = NSDataAsset(name: asset) {
+       return UIImage.gif(data: asset.data)
+    }
+    return nil
+  }
+}
+extension UIImage {
    
     public class func gif(data: Data) -> UIImage? {
         // Create source from data
@@ -41,7 +49,7 @@ extension UIImage {
     }
     public class func gif(name: String) -> UIImage? {
         // Check for existance of gif
-        guard let bundleURL = Bundle(for: self)
+        guard let bundleURL = Bundle(for: self.classForCoder())
             .url(forResource: name, withExtension: "gif") else {
             print("SwiftGif: This image named \"\(name)\" does not exist")
             return nil

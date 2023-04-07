@@ -85,7 +85,11 @@ public class SlidingView: UIView {
         self.gradiantView.layer.insertSublayer(gradientLayer, at: 1)
         self.gradiantView.clipsToBounds = true
         self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
-        verifygifImg.loadGif(name: "verifiedGif")
+        if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
+                self.verifygifImg.image = imageURL
+        } else {
+            print("wrong url")
+        }
         verifygifImg.isHidden = true
         vierifiedLabel.isHidden = true
         submitButton.isHidden = true
@@ -94,10 +98,15 @@ public class SlidingView: UIView {
     }
     
    public func getvalue(vc:UIViewController) {
+       ProgressHUD.show()
         parentController = vc
         if masterUrlId != "" && requestUrl != "" {
             slider.isUserInteractionEnabled = true
-            objfirstViewModel.firstAPICall()
+            objfirstViewModel.firstAPICall() { isSuccess in
+                DispatchQueue.main.async {
+                    ProgressHUD.dismiss()
+                }
+            }
         } else {
             self.parentController?.presentAlert(withTitle: "Error", message: "masterUrlId & requestId values missing")
         }
@@ -109,7 +118,11 @@ public class SlidingView: UIView {
             if obj == true {
                 self.verifygifImg.isHidden = false
                 self.sliderView.backgroundColor = UIColor(hexString: "#1B62A9")
-                self.verifygifImg.loadGif(name: "verifiedGif")
+                if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
+                        self.verifygifImg.image = imageURL
+                } else {
+                    print("wrong url")
+                }
                 self.vierifiedLabel.isHidden = false
                 self.slidetoverifyLabel.isHidden = true
                 self.hiddenuserLabel.isHidden = true
@@ -167,7 +180,11 @@ public class SlidingView: UIView {
                             ProgressHUD.dismiss()
                             self.verifygifImg.isHidden = false
                             self.sliderView.backgroundColor = UIColor(hexString: "#1B62A9")
-                            self.verifygifImg.loadGif(name: "verifiedGif")
+             if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
+                     self.verifygifImg.image = imageURL
+             } else {
+                 print("wrong url")
+             }
                             self.vierifiedLabel.isHidden = false
                             self.slidetoverifyLabel.isHidden = true
                             self.hiddenuserLabel.isHidden = true

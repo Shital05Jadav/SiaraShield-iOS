@@ -56,7 +56,6 @@ import UIKit
      override func viewDidLoad() {
         super.viewDidLoad()
          ProgressHUD.show()
-         
          objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
              ProgressHUD.dismiss()
              if isSuccess{
