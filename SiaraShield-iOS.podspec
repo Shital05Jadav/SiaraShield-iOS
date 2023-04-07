@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SiaraShield-iOS'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'A small framework for verification'
 
 # This description is used to generate tags and improve search results.
@@ -28,8 +28,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/Shital05Jadav/SiaraShield-iOS.git', :tag => s.version.to_s }
  
   s.ios.deployment_target = '12.0'
-  s.source_files = 'SiaraShield-iOS/**/*.{h,m,swift,xib,xcassets}'
-  s.resources = 'SiaraShield-iOS/**/*.{xcassets}'
+  s.source_files = 'SiaraShield-iOS/**/*.{h,m,swift,xib,xcassets,gif}'
+  s.resources = 'SiaraShield-iOS/**/*.{xcassets,gif}'
 
  s.resource_bundles = {
     'SiaraShield-iOS' => 'SiaraShield-iOS/**/*'

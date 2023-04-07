@@ -84,7 +84,7 @@ public class SlidingView: UIView {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
         self.gradiantView.layer.insertSublayer(gradientLayer, at: 1)
         self.gradiantView.clipsToBounds = true
-        slider.setThumbImage(UIImage(named: "rightslider-icon"), for: .normal)
+        self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
         verifygifImg.loadGif(name: "verifiedGif")
         verifygifImg.isHidden = true
         vierifiedLabel.isHidden = true
@@ -125,7 +125,7 @@ public class SlidingView: UIView {
                 self.slidetoverifyLabel.isHidden = false
                 self.hiddenuserLabel.isHidden = false
                 self.submitButton.isHidden = true
-                self.slider.setThumbImage(UIImage(named: "rightslider-icon"), for: .normal)
+                self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
                 self.submitButton.isUserInteractionEnabled = false
             }
         }
@@ -148,7 +148,7 @@ public class SlidingView: UIView {
                     self.slidetoverifyLabel.isHidden = false
                     self.hiddenuserLabel.isHidden = false
                     self.submitButton.isHidden = true
-                    self.slider.setThumbImage(UIImage(named: "rightslider-icon"), for: .normal)
+                    self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
                     self.submitButton.isUserInteractionEnabled = false
                     self.parentController?.presentAlert(withTitle: "Error", message: "Token validation failed.")
                 }
@@ -180,7 +180,7 @@ public class SlidingView: UIView {
                             ProgressHUD.dismiss()
                             self.slider.setValue(0.0, animated: true)
                             if requestId != "" {
-                                let vc = verificationPopUpView()
+                                let vc = verificationPopUpView.init(nibName: "verificationPopUpView", bundle: Bundle(for: self.classForCoder))
                                 vc.modalPresentationStyle = .overFullScreen
                                 self.parentController?.present(vc, animated: true, completion: nil)
                             } else {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class verificationPopUpView: UIViewController {
+ class verificationPopUpView: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var protectByLabel: UILabel!
@@ -26,35 +26,8 @@ class verificationPopUpView: UIViewController {
     var objCaptchaVerify = CaptchaVerifyViewModel()
     var isCaptchaShowing : Bool = false
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        ProgressHUD.show()
-        protectedByBtn.semanticContentAttribute = UIApplication.shared
-            .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
-        let origImage = UIImage(named: "logo")
-        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-        protectedByBtn.setImage(tintedImage, for: .normal)
-        protectedByBtn.tintColor = .lightGray
-        objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
-                ProgressHUD.dismiss()
-                if isSuccess{
-                    if captcha != "" {
-                        if let imageURL = UIImage.gif(url: captcha) {
-                            DispatchQueue.main.async {
-                            self.lettrsview.image = imageURL
-                            }
-                        } else {
-                            self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
-                        }
-                        
-                    } else {
-                        self.presentAlert(withTitle: "Captcha", message: "Captcha not found!")
-                    }
-                } else {
-                    self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
-                }
-        }
-        protectedByBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         mainView.layer.cornerRadius = 10
         mainView.layer.shadowColor = UIColor.lightGray.cgColor
         mainView.layer.shadowOpacity = 1
@@ -78,6 +51,33 @@ class verificationPopUpView: UIViewController {
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(self.onTapProtectedBy))
         protectByLabel.addGestureRecognizer(tap2)
         protectByLabel.isUserInteractionEnabled = true
+    }
+    
+     override func viewDidLoad() {
+        super.viewDidLoad()
+         ProgressHUD.show()
+         
+         objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
+             ProgressHUD.dismiss()
+             if isSuccess{
+                 if captcha != "" {
+                     if let imageURL = UIImage.gif(url: captcha) {
+                         DispatchQueue.main.async {
+                             self.lettrsview.image = imageURL
+                         }
+                     } else {
+                         self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
+                     }
+                     
+                 } else {
+                     self.presentAlert(withTitle: "Captcha", message: "Captcha not found!")
+                 }
+             } else {
+                 self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
+             }
+         }
+       
+       
     }
     
     // MARK: Functions
@@ -161,14 +161,14 @@ class verificationPopUpView: UIViewController {
         if self.isCaptchaShowing == false { // Not Showing
             self.isCaptchaShowing = true
             self.txtSecretcode.isSecureTextEntry = false //Show
-            if let image = UIImage(named: "password-visibility-icon") {
+            if let image = ImageProvider.image(named: "password-visibility-icon") {
                 self.eyeIconButton.setImage(image, for: .normal)
             }
         }
         else if self.isCaptchaShowing == true { // Showing
             self.isCaptchaShowing = false
             self.txtSecretcode.isSecureTextEntry = true //hide
-            if let image = UIImage(named: "password-hide-icon") {
+            if let image = ImageProvider.image(named: "password-hide-icon") {
                 self.eyeIconButton.setImage(image, for: .normal)
             }
         }
@@ -177,7 +177,7 @@ class verificationPopUpView: UIViewController {
 }
 
 extension verificationPopUpView : UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let maxLength = 4
         let currentString = (textField.text ?? "") as NSString
         let newString = currentString.replacingCharacters(in: range, with: string)
@@ -185,7 +185,7 @@ extension verificationPopUpView : UITextFieldDelegate {
         return newString.count <= maxLength
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("return pressed")
         textField.resignFirstResponder()
         if captcha != "" {
