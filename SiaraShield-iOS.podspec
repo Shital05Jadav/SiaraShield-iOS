@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
  
   s.ios.deployment_target = '12.0'
   s.source_files = 'SiaraShield-iOS/**/*.{h,m,swift,xib,xcassets,gif}'
-  s.resources = 'SiaraShield-iOS/**/*.{xcassets,gif}'
+  s.resources = 'SiaraShield-iOS/**/*.{xcassets}'
 
  s.resource_bundles = {
     'SiaraShield-iOS' => 'SiaraShield-iOS/**/*'
