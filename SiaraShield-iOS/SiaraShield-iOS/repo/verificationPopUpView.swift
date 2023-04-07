@@ -43,7 +43,9 @@ import UIKit
         txtSecretcode.delegate = self
         txtSecretcode.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: txtSecretcode.frame.height))
         txtSecretcode.leftViewMode = .always
-        
+         if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230606218-264c1967-f833-48e4-9351-8cba4d8bbd17.gif") {
+                 self.lettrsview.image = imageURL
+         }
         self.moreBtn.setTitle("", for: .normal)
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(self.onTapPrivacyPolicy))
         privacyPolicyLabel.isUserInteractionEnabled = true
@@ -63,9 +65,13 @@ import UIKit
                      if let imageURL = UIImage.gif(url: captcha) {
                          DispatchQueue.main.async {
                              self.lettrsview.image = imageURL
+                             self.lettrsview.contentMode = .scaleAspectFill
                          }
                      } else {
+                         DispatchQueue.main.async {
                          self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
+                             self.lettrsview.image = UIImage()
+                         }
                      }
                      
                  } else {
@@ -189,8 +195,10 @@ extension verificationPopUpView : UITextFieldDelegate {
         textField.resignFirstResponder()
         if captcha != "" {
             ProgressHUD.show()
+            self.view.isUserInteractionEnabled = false
             objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "") { isSuccess in
                 DispatchQueue.main.async {
+                    self.mainView.isUserInteractionEnabled = true
                     ProgressHUD.dismiss()
                     if isSuccess{
                         self.dismiss(animated: true, completion: {

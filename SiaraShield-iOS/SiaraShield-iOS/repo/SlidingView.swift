@@ -86,40 +86,46 @@ public class SlidingView: UIView {
         self.gradiantView.clipsToBounds = true
         self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
         if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
-                self.verifygifImg.image = imageURL
+            self.verifygifImg.image = imageURL
         } else {
             print("wrong url")
         }
         verifygifImg.isHidden = true
         vierifiedLabel.isHidden = true
-        submitButton.isHidden = true
+        submitButton.isHidden = false
         submitButton.isUserInteractionEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("VerifyPopUp"), object: nil)
     }
     
-   public func getvalue(vc:UIViewController) {
-       ProgressHUD.show()
+    public func getvalue(vc:UIViewController) {
+        ProgressHUD.show()
+        self.mainView.isUserInteractionEnabled = false
         parentController = vc
         if masterUrlId != "" && requestUrl != "" {
             slider.isUserInteractionEnabled = true
             objfirstViewModel.firstAPICall() { isSuccess in
                 DispatchQueue.main.async {
+                    self.mainView.isUserInteractionEnabled = true
                     ProgressHUD.dismiss()
                 }
             }
         } else {
-            self.parentController?.presentAlert(withTitle: "Error", message: "masterUrlId & requestId values missing")
+            self.mainView.isUserInteractionEnabled = true
+            ProgressHUD.dismiss()
+            self.parentController?.presentAlert(withTitle: "Error", message: "masterUrlId & requestId values are missing")
         }
     }
     
     // MARK: Functions
     @objc func methodOfReceivedNotification(notification: Notification) {
+        ProgressHUD.show()
         if let obj = notification.object as? Bool {
             if obj == true {
+                ProgressHUD.dismiss()
                 self.verifygifImg.isHidden = false
                 self.sliderView.backgroundColor = UIColor(hexString: "#1B62A9")
                 if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
-                        self.verifygifImg.image = imageURL
+                    self.verifygifImg.image = imageURL
                 } else {
                     print("wrong url")
                 }
@@ -130,6 +136,7 @@ public class SlidingView: UIView {
                 self.submitButton.isHidden = false
                 self.submitButton.isUserInteractionEnabled = true
             } else {
+                ProgressHUD.dismiss()
                 self.slider.setValue(0.0, animated: true)
                 self.sliderView.backgroundColor = UIColor.clear
                 self.verifygifImg.isHidden = true
@@ -174,17 +181,19 @@ public class SlidingView: UIView {
             let value = sender.value
             if value == slider.maximumValue {
                 ProgressHUD.show()
+                self.mainView.isUserInteractionEnabled = false
                 self.objSubmitCaptcha.submitCaptchaAPICall()  { isSuccess in
                     if isSuccess{
                         DispatchQueue.main.async {
+                            self.mainView.isUserInteractionEnabled = true
                             ProgressHUD.dismiss()
                             self.verifygifImg.isHidden = false
                             self.sliderView.backgroundColor = UIColor(hexString: "#1B62A9")
-             if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
-                     self.verifygifImg.image = imageURL
-             } else {
-                 print("wrong url")
-             }
+                            if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
+                                self.verifygifImg.image = imageURL
+                            } else {
+                                print("wrong url")
+                            }
                             self.vierifiedLabel.isHidden = false
                             self.slidetoverifyLabel.isHidden = true
                             self.hiddenuserLabel.isHidden = true
@@ -193,9 +202,10 @@ public class SlidingView: UIView {
                             self.submitButton.isUserInteractionEnabled = true
                         }
                     } else {
+                        self.slider.setValue(0.0, animated: true)
                         DispatchQueue.main.async {
+                            self.mainView.isUserInteractionEnabled = true
                             ProgressHUD.dismiss()
-                            self.slider.setValue(0.0, animated: true)
                             if requestId != "" {
                                 let vc = verificationPopUpView.init(nibName: "verificationPopUpView", bundle: Bundle(for: self.classForCoder))
                                 vc.modalPresentationStyle = .overFullScreen
@@ -211,6 +221,5 @@ public class SlidingView: UIView {
             self.parentController?.presentAlert(withTitle: "Error", message: "masterUrlId & requestId values missing, Please add Proper Values")
         }
     }
-    
 }
 

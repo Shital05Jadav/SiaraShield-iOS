@@ -50,7 +50,7 @@
                                 <constraint firstAttribute="height" constant="42.5" id="Vl6-cD-EVK"/>
                             </constraints>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank" translatesAutoresizingMaskIntoConstraints="NO" id="x8D-KY-kic">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x8D-KY-kic">
                             <rect key="frame" x="17" y="191" width="212.5" height="80.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80.5" id="R3M-F7-d2U"/>
@@ -253,7 +253,6 @@
         </view>
     </objects>
     <resources>
-        <image name="blank" width="20" height="20"/>
         <image name="close" width="20" height="20"/>
         <image name="down_Arrow" width="20" height="20"/>
         <image name="flag" width="20" height="20"/>
