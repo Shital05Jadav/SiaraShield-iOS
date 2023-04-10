@@ -134,6 +134,9 @@ import UIKit
     
     @IBAction func onTapRefresh(_ sender: UIButton) {
         ProgressHUD.show()
+        if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230606218-264c1967-f833-48e4-9351-8cba4d8bbd17.gif") {
+                self.lettrsview.image = imageURL
+        }
         objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
                 ProgressHUD.dismiss()
                 if isSuccess{
@@ -164,19 +167,12 @@ import UIKit
     }
     
     @IBAction func OnTapHideShowcaptchaCode(_ sender: UIButton) {
-        if self.isCaptchaShowing == false { // Not Showing
-            self.isCaptchaShowing = true
-            self.txtSecretcode.isSecureTextEntry = false //Show
-            if let image = ImageProvider.image(named: "password-visibility-icon") {
-                self.eyeIconButton.setImage(image, for: .normal)
-            }
+        
+        guard let url = URL(string: "https://www.cybersiara.com/accessibility") else {
+            return
         }
-        else if self.isCaptchaShowing == true { // Showing
-            self.isCaptchaShowing = false
-            self.txtSecretcode.isSecureTextEntry = true //hide
-            if let image = ImageProvider.image(named: "password-hide-icon") {
-                self.eyeIconButton.setImage(image, for: .normal)
-            }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
@@ -206,7 +202,7 @@ extension verificationPopUpView : UITextFieldDelegate {
                             NotificationCenter.default.post(name: Notification.Name("VerifyPopUp"), object: true)
                         })
                     } else {
-                        self.presentAlert(withTitle: "Error", message: "Wrong Captcha, Please enter again!")
+                        self.presentAlert(withTitle: "Error", message: "Wrong Captcha, Please try again!")
                     }
                 }
             }
