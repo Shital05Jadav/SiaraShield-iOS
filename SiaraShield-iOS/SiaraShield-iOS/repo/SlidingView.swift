@@ -92,7 +92,7 @@ public class SlidingView: UIView {
         }
         verifygifImg.isHidden = true
         vierifiedLabel.isHidden = true
-        submitButton.isHidden = false
+        submitButton.isHidden = true
         submitButton.isUserInteractionEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("VerifyPopUp"), object: nil)
     }
