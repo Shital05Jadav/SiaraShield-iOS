@@ -57,9 +57,7 @@ import UIKit
     
      override func viewDidLoad() {
         super.viewDidLoad()
-         ProgressHUD.show()
          objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
-             ProgressHUD.dismiss()
              if isSuccess{
                  if captcha != "" {
                      if let imageURL = UIImage.gif(url: captcha) {
@@ -145,7 +143,10 @@ import UIKit
                             self.lettrsview.image = imageURL
                             }
                         } else {
+                            DispatchQueue.main.async {
                             self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
+                                self.lettrsview.image = UIImage()
+                            }
                         }
                     } else {
                         self.presentAlert(withTitle: "Error", message: "Captcha not found!")
@@ -195,7 +196,7 @@ extension verificationPopUpView : UITextFieldDelegate {
         textField.resignFirstResponder()
         if captcha != "" {
             ProgressHUD.show()
-            self.view.isUserInteractionEnabled = false
+            self.view.isUserInteractionEnabled = true
             objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "") { isSuccess in
                 DispatchQueue.main.async {
                     self.mainView.isUserInteractionEnabled = true

@@ -121,7 +121,6 @@ public class SlidingView: UIView {
         ProgressHUD.show()
         if let obj = notification.object as? Bool {
             if obj == true {
-                ProgressHUD.dismiss()
                 self.verifygifImg.isHidden = false
                 self.sliderView.backgroundColor = UIColor(hexString: "#1B62A9")
                 if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
@@ -135,8 +134,8 @@ public class SlidingView: UIView {
                 self.slider.setThumbImage(UIImage(), for: .normal)
                 self.submitButton.isHidden = false
                 self.submitButton.isUserInteractionEnabled = true
-            } else {
                 ProgressHUD.dismiss()
+            } else {
                 self.slider.setValue(0.0, animated: true)
                 self.sliderView.backgroundColor = UIColor.clear
                 self.verifygifImg.isHidden = true
@@ -147,6 +146,7 @@ public class SlidingView: UIView {
                 self.submitButton.isHidden = true
                 self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
                 self.submitButton.isUserInteractionEnabled = false
+                ProgressHUD.dismiss()
             }
         }
     }
@@ -202,15 +202,16 @@ public class SlidingView: UIView {
                             self.submitButton.isUserInteractionEnabled = true
                         }
                     } else {
-                        self.slider.setValue(0.0, animated: true)
                         DispatchQueue.main.async {
                             self.mainView.isUserInteractionEnabled = true
-                            ProgressHUD.dismiss()
                             if requestId != "" {
+                                ProgressHUD.dismiss()
                                 let vc = verificationPopUpView.init(nibName: "verificationPopUpView", bundle: Bundle(for: self.classForCoder))
                                 vc.modalPresentationStyle = .overFullScreen
                                 self.parentController?.present(vc, animated: true, completion: nil)
                             } else {
+                                ProgressHUD.dismiss()
+                                self.slider.setValue(0.0, animated: true)
                                 self.parentController?.presentAlert(withTitle: "Error", message: "Request Id and Vister Id not found!!")
                             }
                         }
