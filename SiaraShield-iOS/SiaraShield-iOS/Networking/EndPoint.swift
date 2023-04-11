@@ -32,7 +32,7 @@ enum NetworkResponse:String {
 
 final class EndPoint: NSObject {
     
-    var baseURL : String = "https://invisiblecaptchaembed.mycybersiara.com/api/"
+    var baseURL : String = "https://embed.mycybersiara.com/api/"
         
     static let shared = EndPoint()
     

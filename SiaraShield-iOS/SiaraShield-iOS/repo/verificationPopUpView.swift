@@ -25,6 +25,7 @@ class verificationPopUpView: UIViewController {
     var objGenerateCaptcha = GenerateCaptchaViewModel()
     var objCaptchaVerify = CaptchaVerifyViewModel()
     var isCaptchaShowing : Bool = false
+    var yposition = Double()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -58,6 +59,7 @@ class verificationPopUpView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.yposition = self.mainView.frame.origin.y
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
@@ -97,17 +99,16 @@ class verificationPopUpView: UIViewController {
             // if keyboard size is not available for some reason, dont do anything
             return
         }
-        
-        // move the root view up by the distance of keyboard height
-        DispatchQueue.main.async {
-        self.mainView.frame.origin.y = 0 - 20
+        if self.view.frame.origin.y == 0 {
+        self.mainView.frame.origin.y -=  50
         }
+       
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         // move back the root view origin to zero
-        DispatchQueue.main.async {
-        self.mainView.frame.origin.y = 0
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
         }
     }
     
@@ -209,6 +210,7 @@ class verificationPopUpView: UIViewController {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
+    
 }
 
 extension verificationPopUpView : UITextFieldDelegate {
@@ -225,7 +227,6 @@ extension verificationPopUpView : UITextFieldDelegate {
         textField.resignFirstResponder()
         if captcha != "" {
             ProgressHUD.show()
-            self.view.isUserInteractionEnabled = false
             objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "") { isSuccess in
                 DispatchQueue.main.async {
                     self.mainView.isUserInteractionEnabled = true
