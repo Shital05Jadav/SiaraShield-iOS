@@ -202,22 +202,13 @@ class verificationPopUpView: UIViewController {
     }
     
     @IBAction func OnTapHideShowcaptchaCode(_ sender: UIButton) {
-        if self.isCaptchaShowing == false { // Not Showing
-            self.isCaptchaShowing = true
-            self.txtSecretcode.isSecureTextEntry = false //Show
-            if let image = ImageProvider.image(named: "password-visibility-icon") {
-                self.eyeIconButton.setImage(image, for: .normal)
-            }
+        guard let url = URL(string: "https://www.cybersiara.com/accessibility") else {
+            return
         }
-        else if self.isCaptchaShowing == true { // Showing
-            self.isCaptchaShowing = false
-            self.txtSecretcode.isSecureTextEntry = true //hide
-            if let image = ImageProvider.image(named: "password-hide-icon") {
-                self.eyeIconButton.setImage(image, for: .normal)
-            }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-    
 }
 
 extension verificationPopUpView : UITextFieldDelegate {
