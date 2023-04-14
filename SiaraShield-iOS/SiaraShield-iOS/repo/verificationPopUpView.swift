@@ -62,6 +62,8 @@ class verificationPopUpView: UIViewController {
         self.yposition = self.mainView.frame.origin.y
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
             if isSuccess{
                 if captcha != "" {
@@ -95,12 +97,11 @@ class verificationPopUpView: UIViewController {
     // MARK: Functions
     @objc func keyboardWillShow(notification: NSNotification) {
         
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            // if keyboard size is not available for some reason, dont do anything
-            return
-        }
+//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+//            return
+//        }
         if self.view.frame.origin.y == 0 {
-        self.mainView.frame.origin.y -=  50
+        self.view.frame.origin.y -=  50
         }
        
     }
@@ -110,6 +111,10 @@ class verificationPopUpView: UIViewController {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @objc func onTapPrivacyPolicy(sender:UITapGestureRecognizer) {
@@ -161,11 +166,13 @@ class verificationPopUpView: UIViewController {
     }
     
     @IBAction func onTapRefresh(_ sender: UIButton) {
+        DispatchQueue.main.async {
         ProgressHUD.show()
         if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230606218-264c1967-f833-48e4-9351-8cba4d8bbd17.gif") {
             self.lettrsview.image = imageURL
         }
-        objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
+        }
+        self.objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
             ProgressHUD.dismiss()
             if isSuccess{
                 if captcha != "" {
