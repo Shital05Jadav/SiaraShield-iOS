@@ -64,46 +64,19 @@ class verificationPopUpView: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
-            if isSuccess{
-                if captcha != "" {
-                    if let imageURL = UIImage.gif(url: captcha) {
-                        DispatchQueue.main.async {
-                            self.lettrsview.image = imageURL
-                            self.lettrsview.contentMode = .scaleAspectFill
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
-                            self.lettrsview.image = UIImage()
-                        }
-                    }
-                    
-                } else {
-                    DispatchQueue.main.async {
-                    self.presentAlert(withTitle: "Captcha", message: "Captcha not found!")
-                        self.lettrsview.image = UIImage()
-                    }
-                }
-            } else {
-                DispatchQueue.main.async {
-                self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
-                    self.lettrsview.image = UIImage()
-                }
-            }
-        }
+        self.generateCaptcha()
     }
     
     // MARK: Functions
     @objc func keyboardWillShow(notification: NSNotification) {
         
-//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-//            return
-//        }
+        //        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+        //            return
+        //        }
         if self.view.frame.origin.y == 0 {
-        self.view.frame.origin.y -=  50
+            self.view.frame.origin.y -=  50
         }
-       
+        
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -132,6 +105,82 @@ class verificationPopUpView: UIViewController {
         }
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    func generateCaptcha() {
+        self.txtSecretcode.text = ""
+        self.objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
+            ProgressHUD.dismiss()
+            if isSuccess{
+                if captcha != "" {
+                    if let imageURL = UIImage.gif(url: captcha) {
+                        DispatchQueue.main.async {
+                            self.lettrsview.image = imageURL
+                            self.lettrsview.contentMode = .scaleAspectFill
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let alertController = UIAlertController(title: "Error", message: "Wrong Captcha Url found!", preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                                if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230606218-264c1967-f833-48e4-9351-8cba4d8bbd17.gif") {
+                                    self.lettrsview.image = imageURL
+                                } else {
+                                    self.lettrsview.image = UIImage()
+                                }
+                                self.generateCaptcha()
+                            }
+                            alertController.addAction(OKAction)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                    }
+                    
+                } else {
+                    DispatchQueue.main.async {
+                        self.presentAlert(withTitle: "Captcha", message: "Captcha not found!")
+                        self.lettrsview.image = UIImage()
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
+                    self.lettrsview.image = UIImage()
+                }
+            }
+        }
+    }
+    
+    func captchVerifyCall() {
+        if captcha != "" {
+            ProgressHUD.show()
+            objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "") { isSuccess in
+                DispatchQueue.main.async {
+                    self.mainView.isUserInteractionEnabled = true
+                    ProgressHUD.dismiss()
+                    if isSuccess{
+                        self.dismiss(animated: true, completion: {
+                            NotificationCenter.default.post(name: Notification.Name("VerifyPopUp"), object: true)
+                        })
+                    } else {
+                        let alertController = UIAlertController(title: "Error", message: "Wrong Captcha, Please try again!", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                            if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230606218-264c1967-f833-48e4-9351-8cba4d8bbd17.gif") {
+                                self.lettrsview.image = imageURL
+                            } else {
+                                self.lettrsview.image = UIImage()
+                            }
+                            self.generateCaptcha()
+                        }
+                        alertController.addAction(OKAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
+            }
+            
+        } else {
+            DispatchQueue.main.async {
+                self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
+            }
         }
     }
     
@@ -167,39 +216,12 @@ class verificationPopUpView: UIViewController {
     
     @IBAction func onTapRefresh(_ sender: UIButton) {
         DispatchQueue.main.async {
-        ProgressHUD.show()
-        if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230606218-264c1967-f833-48e4-9351-8cba4d8bbd17.gif") {
-            self.lettrsview.image = imageURL
-        }
-        }
-        self.objGenerateCaptcha.generateCaptchaAPICall()  { isSuccess in
-            ProgressHUD.dismiss()
-            if isSuccess{
-                if captcha != "" {
-                    if let imageURL = UIImage.gif(url: captcha) {
-                        DispatchQueue.main.async {
-                            self.lettrsview.image = imageURL
-                            self.lettrsview.contentMode = .scaleAspectFill
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            self.presentAlert(withTitle: "Captcha", message: "Wrong Captcha Url found!")
-                            self.lettrsview.image = UIImage()
-                        }
-                    }
-                    
-                } else {
-                    DispatchQueue.main.async {
-                    self.presentAlert(withTitle: "Captcha", message: "Captcha not found!")
-                        self.lettrsview.image = UIImage()
-                    }
-                }
-            } else {
-                DispatchQueue.main.async {
-                self.presentAlert(withTitle: "Error", message: "Captcha not found!!")
-                    self.lettrsview.image = UIImage()
-                }
+            ProgressHUD.show()
+            if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230606218-264c1967-f833-48e4-9351-8cba4d8bbd17.gif") {
+                ProgressHUD.dismiss()
+                self.lettrsview.image = imageURL
             }
+            self.generateCaptcha()
         }
     }
     
@@ -226,6 +248,41 @@ extension verificationPopUpView : UITextFieldDelegate {
         let currentString = (textField.text ?? "") as NSString
         let newString = currentString.replacingCharacters(in: range, with: string)
         
+        if newString.count == 4 {
+            self.txtSecretcode.text = newString
+            textField.resignFirstResponder()
+            if captcha != "" {
+                ProgressHUD.show()
+                objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "") { isSuccess in
+                    DispatchQueue.main.async {
+                        self.mainView.isUserInteractionEnabled = true
+                        ProgressHUD.dismiss()
+                        if isSuccess{
+                            self.dismiss(animated: true, completion: {
+                                NotificationCenter.default.post(name: Notification.Name("VerifyPopUp"), object: true)
+                            })
+                        } else {
+                            let alertController = UIAlertController(title: "Error", message: "Wrong Captcha, Please try again!", preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                                if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230606218-264c1967-f833-48e4-9351-8cba4d8bbd17.gif") {
+                                    self.lettrsview.image = imageURL
+                                } else {
+                                    self.lettrsview.image = UIImage()
+                                }
+                                self.generateCaptcha()
+                            }
+                            alertController.addAction(OKAction)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                    }
+                }
+                
+            } else {
+                DispatchQueue.main.async {
+                    self.presentAlert(withTitle: "Captcha", message: "Captcha not found!")
+                }
+            }
+        }
         return newString.count <= maxLength
     }
     
@@ -243,7 +300,17 @@ extension verificationPopUpView : UITextFieldDelegate {
                             NotificationCenter.default.post(name: Notification.Name("VerifyPopUp"), object: true)
                         })
                     } else {
-                        self.presentAlert(withTitle: "Error", message: "Wrong Captcha, Please enter again!")
+                        let alertController = UIAlertController(title: "Error", message: "Wrong Captcha, Please try again!", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                            if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230606218-264c1967-f833-48e4-9351-8cba4d8bbd17.gif") {
+                                self.lettrsview.image = imageURL
+                            } else {
+                                self.lettrsview.image = UIImage()
+                            }
+                            self.generateCaptcha()
+                        }
+                        alertController.addAction(OKAction)
+                        self.present(alertController, animated: true, completion: nil)
                     }
                 }
             }
