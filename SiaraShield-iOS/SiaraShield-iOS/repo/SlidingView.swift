@@ -146,6 +146,11 @@ public class SlidingView: UIView {
                     self.submitButton.isHidden = true
                     self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
                     self.submitButton.isUserInteractionEnabled = false
+                    ProgressHUD.show()
+                    self.objfirstViewModel.firstAPICall() { isSuccess in
+                            self.mainView.isUserInteractionEnabled = true
+                            ProgressHUD.dismiss()
+                    }
                 }
             } else {
                 self.slider.setValue(0.0, animated: true)
@@ -158,7 +163,10 @@ public class SlidingView: UIView {
                 self.submitButton.isHidden = true
                 self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
                 self.submitButton.isUserInteractionEnabled = false
-                ProgressHUD.dismiss()
+                self.objfirstViewModel.firstAPICall() { isSuccess in
+                        self.mainView.isUserInteractionEnabled = true
+                        ProgressHUD.dismiss()
+                }
             }
         }
     }
@@ -193,6 +201,12 @@ public class SlidingView: UIView {
                     self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
                     self.submitButton.isUserInteractionEnabled = false
                     self.parentController?.presentAlert(withTitle: "Error", message: "Token validation failed.")
+                    self.objfirstViewModel.firstAPICall() { isSuccess in
+                        DispatchQueue.main.async {
+                            self.mainView.isUserInteractionEnabled = true
+                            ProgressHUD.dismiss()
+                        }
+                    }
                 }
             }
         }
@@ -245,4 +259,3 @@ public class SlidingView: UIView {
         }
     }
 }
-

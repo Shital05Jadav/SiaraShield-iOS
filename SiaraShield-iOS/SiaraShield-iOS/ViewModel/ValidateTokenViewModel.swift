@@ -25,14 +25,7 @@ class ValidateTokenViewModel: NSObject {
         
         request.allHTTPHeaderFields = header
        debugPrint(header)
-//        if token != "" {
-//            request.setValue(
-//                "Bearer \(token)",
-//                forHTTPHeaderField: "Authentication"
-//            )
-//        } else {
-//            completion(false)
-//        }
+
         debugPrint(request)
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in

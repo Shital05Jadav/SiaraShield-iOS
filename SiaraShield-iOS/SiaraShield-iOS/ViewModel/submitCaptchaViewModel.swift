@@ -13,10 +13,14 @@ class submitCaptchaViewModel: NSObject {
     var submitCaptchaReq = submitCaptchaRequest()
     
     func submitCaptchaAPICall(completion: @escaping( _ ifResult: Bool) -> Void) {
+        token = ""
         let url = EndPoint.shared.submitCaptchaURL()
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.POST.rawValue
-        submitCaptchaReq.masterUrl = masterUrlId
+        let header = [
+            "Content-Type" : "application/json"
+        ]
+       submitCaptchaReq.masterUrl = masterUrlId
         submitCaptchaReq.deviceIp = deviceIp[1]
         submitCaptchaReq.deviceName = deviceName
         submitCaptchaReq.browserIdentity = browserIdentity
@@ -36,6 +40,7 @@ class submitCaptchaViewModel: NSObject {
         guard let jsonObj = submitCaptchaReq.dictionary else {
             return
         }
+
         if (!JSONSerialization.isValidJSONObject(jsonObj)) {
             print("is not a valid json object")
             return
@@ -45,6 +50,7 @@ class submitCaptchaViewModel: NSObject {
             return
         }
         request.httpBody = httpBody
+        request.allHTTPHeaderFields = header
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let response = response {
@@ -62,6 +68,9 @@ class submitCaptchaViewModel: NSObject {
                         debugPrint(json)
                         let msg = json["Message"] as? String
                         if msg == "Success" || msg == "success" {
+                            if let tokenVal = json["data"] as? String {
+                                token = tokenVal
+                            }
                             completion(true)
                         } else if msg == "fail" || msg == "Fail" {
                             completion(false)
