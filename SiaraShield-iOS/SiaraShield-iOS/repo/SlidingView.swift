@@ -146,11 +146,6 @@ public class SlidingView: UIView {
                     self.submitButton.isHidden = true
                     self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
                     self.submitButton.isUserInteractionEnabled = false
-                    ProgressHUD.show()
-                    self.objfirstViewModel.firstAPICall() { isSuccess in
-                            self.mainView.isUserInteractionEnabled = true
-                            ProgressHUD.dismiss()
-                    }
                 }
             } else {
                 self.slider.setValue(0.0, animated: true)
@@ -163,9 +158,49 @@ public class SlidingView: UIView {
                 self.submitButton.isHidden = true
                 self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
                 self.submitButton.isUserInteractionEnabled = false
-                self.objfirstViewModel.firstAPICall() { isSuccess in
-                        self.mainView.isUserInteractionEnabled = true
+                ProgressHUD.dismiss()
+            }
+        }
+    }
+    
+    func submitCaptchaAPICall() {
+        ProgressHUD.show()
+        self.mainView.isUserInteractionEnabled = false
+        self.slider.isUserInteractionEnabled = false
+        self.objSubmitCaptcha.submitCaptchaAPICall()  { isSuccess in
+            if isSuccess{
+                DispatchQueue.main.async {
+                    self.mainView.isUserInteractionEnabled = true
+                    self.slider.isUserInteractionEnabled = true
+                    ProgressHUD.dismiss()
+                    self.verifygifImg.isHidden = false
+                    self.sliderView.backgroundColor = UIColor(hexString: "#1B62A9")
+                    if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
+                        self.verifygifImg.image = imageURL
+                    } else {
+                        print("wrong url")
+                    }
+                    self.vierifiedLabel.isHidden = false
+                    self.slidetoverifyLabel.isHidden = true
+                    self.hiddenuserLabel.isHidden = true
+                    self.slider.setThumbImage(UIImage(), for: .normal)
+                    self.submitButton.isHidden = false
+                    self.submitButton.isUserInteractionEnabled = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.mainView.isUserInteractionEnabled = true
+                    self.slider.isUserInteractionEnabled = true
+                    if requestId != "" {
                         ProgressHUD.dismiss()
+                        let vc = verificationPopUpView.init(nibName: "verificationPopUpView", bundle: Bundle(for: self.classForCoder))
+                        vc.modalPresentationStyle = .overFullScreen
+                        self.parentController?.present(vc, animated: true, completion: nil)
+                    } else {
+                        ProgressHUD.dismiss()
+                        self.slider.setValue(0.0, animated: true)
+                        self.parentController?.presentAlert(withTitle: "Error", message: "Request Id and Vister Id not found!!")
+                    }
                 }
             }
         }
@@ -201,12 +236,6 @@ public class SlidingView: UIView {
                     self.slider.setThumbImage(ImageProvider.image(named: "rightslider-icon"), for: .normal)
                     self.submitButton.isUserInteractionEnabled = false
                     self.parentController?.presentAlert(withTitle: "Error", message: "Token validation failed.")
-                    self.objfirstViewModel.firstAPICall() { isSuccess in
-                        DispatchQueue.main.async {
-                            self.mainView.isUserInteractionEnabled = true
-                            ProgressHUD.dismiss()
-                        }
-                    }
                 }
             }
         }
@@ -216,46 +245,12 @@ public class SlidingView: UIView {
         if masterUrlId != "" && requestUrl != "" {
             let value = sender.value
             if value == slider.maximumValue {
-                ProgressHUD.show()
-                self.mainView.isUserInteractionEnabled = false
-                self.objSubmitCaptcha.submitCaptchaAPICall()  { isSuccess in
-                    if isSuccess{
-                        DispatchQueue.main.async {
-                            self.mainView.isUserInteractionEnabled = true
-                            ProgressHUD.dismiss()
-                            self.verifygifImg.isHidden = false
-                            self.sliderView.backgroundColor = UIColor(hexString: "#1B62A9")
-                            if let imageURL = UIImage.gif(url: "https://user-images.githubusercontent.com/128694120/230565042-0e450ddb-5a52-4b83-b851-abcf5b649750.gif") {
-                                self.verifygifImg.image = imageURL
-                            } else {
-                                print("wrong url")
-                            }
-                            self.vierifiedLabel.isHidden = false
-                            self.slidetoverifyLabel.isHidden = true
-                            self.hiddenuserLabel.isHidden = true
-                            self.slider.setThumbImage(UIImage(), for: .normal)
-                            self.submitButton.isHidden = false
-                            self.submitButton.isUserInteractionEnabled = true
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            self.mainView.isUserInteractionEnabled = true
-                            if requestId != "" {
-                                ProgressHUD.dismiss()
-                                let vc = verificationPopUpView.init(nibName: "verificationPopUpView", bundle: Bundle(for: self.classForCoder))
-                                vc.modalPresentationStyle = .overFullScreen
-                                self.parentController?.present(vc, animated: true, completion: nil)
-                            } else {
-                                ProgressHUD.dismiss()
-                                self.slider.setValue(0.0, animated: true)
-                                self.parentController?.presentAlert(withTitle: "Error", message: "Request Id and Vister Id not found!!")
-                            }
-                        }
-                    }
-                }
+                slider.isContinuous = false
+                submitCaptchaAPICall()
             }
         } else {
             self.parentController?.presentAlert(withTitle: "Error", message: "masterUrlId & requestId values missing, Please add Proper Values")
         }
     }
 }
+

@@ -26,6 +26,8 @@ class verificationPopUpView: UIViewController {
     var objCaptchaVerify = CaptchaVerifyViewModel()
     var isCaptchaShowing : Bool = false
     var yposition = Double()
+    var timer : Timer?
+    var counter = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -55,7 +57,6 @@ class verificationPopUpView: UIViewController {
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(self.onTapProtectedBy))
         protectByLabel.addGestureRecognizer(tap2)
         protectByLabel.isUserInteractionEnabled = true
-        
     }
     
     override func viewDidLoad() {
@@ -65,6 +66,7 @@ class verificationPopUpView: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        timer = Timer.scheduledTimer(timeInterval:1, target:self, selector:#selector(prozessTimer), userInfo: nil, repeats: true)
         self.generateCaptcha()
     }
     
@@ -90,6 +92,11 @@ class verificationPopUpView: UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    @objc func prozessTimer() {
+        counter += 1
+    }
+
     
     @objc func onTapPrivacyPolicy(sender:UITapGestureRecognizer) {
         guard let url = URL(string: "https://www.cybersiara.com/privacy") else {
@@ -159,7 +166,10 @@ class verificationPopUpView: UIViewController {
     func captchVerifyCall() {
         if captcha != "" {
             ProgressHUD.show()
-            objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "") { isSuccess in
+            objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "", fillupsecond: "\(counter)") { isSuccess in
+                self.timer?.invalidate()
+                self.timer = nil
+                self.counter = 0
                 DispatchQueue.main.async {
                     self.mainView.isUserInteractionEnabled = true
                     ProgressHUD.dismiss()
@@ -246,7 +256,10 @@ extension verificationPopUpView : UITextFieldDelegate {
             textField.resignFirstResponder()
             if captcha != "" {
                 ProgressHUD.show()
-                objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "") { isSuccess in
+                objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "", fillupsecond: "\(counter)") { isSuccess in
+                    self.timer?.invalidate()
+                    self.timer = nil
+                    self.counter = 0
                     DispatchQueue.main.async {
                         self.mainView.isUserInteractionEnabled = true
                         ProgressHUD.dismiss()
@@ -275,7 +288,10 @@ extension verificationPopUpView : UITextFieldDelegate {
         textField.resignFirstResponder()
         if captcha != "" {
             ProgressHUD.show()
-            objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "") { isSuccess in
+            objCaptchaVerify.captchaVerifyAPICall(userCaptcha: self.txtSecretcode.text ?? "", fillupsecond: "\(counter)") { isSuccess in
+                self.timer?.invalidate()
+                self.timer = nil
+                self.counter = 0
                 DispatchQueue.main.async {
                     self.mainView.isUserInteractionEnabled = true
                     ProgressHUD.dismiss()

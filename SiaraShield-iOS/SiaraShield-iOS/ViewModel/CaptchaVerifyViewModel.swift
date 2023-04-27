@@ -11,11 +11,11 @@ class CaptchaVerifyViewModel: NSObject {
     
     var captchaVerifyReq = captchVerifyRequest()
     
-    func captchaVerifyAPICall(userCaptcha: String, completion: @escaping( _ ifResult: Bool) -> Void) {
-        token = ""
+    func captchaVerifyAPICall(userCaptcha: String, fillupsecond: String, completion: @escaping( _ ifResult: Bool) -> Void) {
         let url = EndPoint.shared.captchaVerifyURL()
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.POST.rawValue
+    
         let jsonObj:Dictionary<String, Any> = [
         "MasterUrl":masterUrlId,
         "DeviceIp":deviceIp[1],
@@ -24,13 +24,13 @@ class CaptchaVerifyViewModel: NSObject {
         "UserCaptcha":userCaptcha,
         "ByPass":"Netural",
         "BrowserIdentity":browserIdentity,
-        "Timespent":"24",
+        "Timespent":"5",
         "Protocol":protocol_Value,
         "Flag":"1",
-        "second":"2",
+        "second":"5",
         "RequestID":requestId,
         "VisiterId":visiter_Id,
-        "fillupsecond":"8"
+        "fillupsecond":fillupsecond
         ]
         debugPrint(jsonObj)
         if (!JSONSerialization.isValidJSONObject(jsonObj)) {
